@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import { ProductList } from './ProductList';
+import AllRoutes from './Components/AllRoutes';
+import Navbar from './Components/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <ProductList />
+    <div>
+      <Navbar/>
+      <AllRoutes/>
     </div>
   );
 }
