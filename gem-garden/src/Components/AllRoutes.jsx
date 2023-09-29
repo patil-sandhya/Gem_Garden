@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 import Home from '../Pages/Home'
 
 
+
+
 function AllRoutes() {
   return (
     <div>
