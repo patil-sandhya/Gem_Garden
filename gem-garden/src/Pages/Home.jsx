@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import heroimg from "../Assets/Hero_image.jpg";
 import styled from "styled-components";
 import product_1 from "../Assets/new-collection-product-1.jpg";
@@ -6,8 +6,24 @@ import product_2 from "../Assets/new-collection-product-2.jpg";
 import product_3 from "../Assets/new-collection-product-3.jpg";
 import product_4 from "../Assets/new-collection-product-4.jpg";
 import Collectioncard from "../Components/Collectioncard";
+import collection_1 from "../Assets/collection-1.jpg"
+import collection_2 from "../Assets/collection-2.jpg"
+import collection_3 from "../Assets/collection-3.jpg"
+import collection_4 from "../Assets/collection-4.jpg"
+import collection_5 from "../Assets/collection-5.jpg"
+import collection_6 from "../Assets/collection-6.jpg"
+
+
 
 function Home() {
+
+  const[count,setCount] = useState(1);
+
+  const handelCount =(val)=>{
+    setCount(val)
+  }
+
+  console.log(count)
   return (
     <DIV>
       <div className="hero-img">
@@ -68,9 +84,26 @@ function Home() {
             <h2>Categories</h2>
             <p>Discover Our collection of Jewelry by categories</p>
           </div>
+          <div className="categories-items">
+            <h4 onClick={()=>{handelCount(1)}}>Rings</h4>
+            <h4 onClick={()=>{handelCount(2)}}>Bracelets</h4>
+            <h4 onClick={()=>{handelCount(3)}}>Earrings</h4>
+            <h4 onClick={()=>{handelCount(4)}}>Neckless & Pendants</h4>
+            <h4 onClick={()=>{handelCount(5)}}>Watches</h4>
+            <h4 onClick={()=>{handelCount(6)}}>Men's Jewelry</h4>
+          </div>
+          <div className="categories-end">
+            <p>ALL COLLLECTIONS</p>
+          </div>
         </div>
-        <div className="categories-right"></div>
+        <div className="categories-right">
+          {count == 1 ? <img src = {collection_1} /> : count == 2 ? <img src={collection_2}/> : count == 3 ? <img src={collection_3}/> : count == 4 ? <img src={collection_4}/> : count == 5 ? <img src={collection_5}/> : <img src={collection_6}/>}
+        </div>
       </div>
+
+      {/* Categories done */}
+
+      
     </DIV>
   );
 }
@@ -127,16 +160,56 @@ const DIV = styled.div`
   .new-collections-heading > div > p {
     font-family: "Nunito Sans", sans-serif;
   }
-  .new-collections-heading-right {
+  .new-collections-heading-right, .categories-end {
     letter-spacing: 3px;
     font-family: "Nunito Sans", sans-serif;
   }
   .new-collection-products {
     margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
   }
   .categories{
     display: flex;
+  }
+  .categories-left{
+    width: 60%;
+  }
+  .categories-right{
+    width: 50%;
+    padding: 10px;
+  }
+  .categories-right img{
+    width: 100%;
+  }
+  .categories-items{
+    font-family: 'Nunito Sans', sans-serif;
+    cursor: pointer;
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .categories-items >h4{
+    transition: 0.3s;
+  }
+  .categories-items >h4:hover{
+    font-size: large;
+  }
+
+  @media (max-width: 780px){
+    .new-collection-products{
+      grid-template-columns: repeat(2,1fr);
+    }
+    .categories{
+      flex-direction: column;
+    }
+    .categories-left{
+      width: 100%;
+    }
+    .categories-right{
+      width: 100%;
+    }
   }
 `;
