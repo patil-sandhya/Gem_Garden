@@ -6,6 +6,9 @@ import Login from '../Pages/Login'
 import SignUp from '../Pages/SignUp'
 import Cart from './Cart'
 
+
+
+
 function AllRoutes() {
   return (
     <div>
