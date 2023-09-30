@@ -13,6 +13,13 @@ import collection_5 from "../Assets/collection-5.jpg";
 import collection_6 from "../Assets/collection-6.jpg";
 import { Link } from "react-router-dom";
 import HeroSection from "../Components/HeroSection";
+import BestSellerCard from "../Components/BestSellerCard";
+import best_seller_1 from "../Assets/bestSeller-1.jpg";
+import best_seller_2 from "../Assets/bestSeller-2.jpg";
+import best_seller_3 from "../Assets/bestSeller-3.jpg";
+import best_seller_4 from "../Assets/bestSeller-4.jpg";
+import gift from "../Assets/gift.jpg";
+import about from "../Assets/about.jpg";
 
 function Home() {
   const [count, setCount] = useState(1);
@@ -140,6 +147,97 @@ function Home() {
       </div>
 
       {/* Categories done */}
+
+      <div className="best_seller">
+        <div className="best_seller-heading">
+          <div>
+            <h2>Bessellers</h2>
+            <p>Check Out the New Collections of Famous Brands</p>
+          </div>
+          <div className="best_seller-heading-right">
+            <p>
+              <Link to="/ProductList">VIEW ALL</Link>
+            </p>
+          </div>
+        </div>
+        <div className="best_seller-products">
+          <BestSellerCard
+            image={best_seller_1}
+            title={"Messika"}
+            desc={"White Gold Diamond Ring"}
+            price={"1.390"}
+          />
+          <BestSellerCard
+            image={best_seller_2}
+            title={"Tiffani"}
+            desc={"Silver Necklace"}
+            price={"750"}
+          />
+          <BestSellerCard
+            image={best_seller_3}
+            title={"Bulgari"}
+            desc={"White Gold Diamond Earrings"}
+            price={"7.250"}
+          />
+          <BestSellerCard
+            image={best_seller_4}
+            title={"Cartier"}
+            desc={"White Gold Ring"}
+            price={"1.950"}
+          />
+        </div>
+      </div>
+
+      {/* Best Seller Done */}
+
+      <div className="gift">
+        <img src={gift} />
+        <div className="gift-text">
+          <h2>Gifts</h2>
+          <p>Looking for the prefect gift?</p>
+          <p>Look no further! Our extensive collection of jewelry gifts</p>
+          <p>includes something for everyone - from elegent and timeless</p>
+          <p>prices for her to bold and sophisticated desings for him</p>
+          <div className="gift-text-end">
+            <p>SHOP GIFTS</p>
+          </div>
+        </div>
+      </div>
+
+      {/* gift done  */}
+
+      <div className="about">
+        <div className="about-left">
+          <div className="about-heading">
+            <h2>About</h2>
+            <p>Gem Garden is More Then Just Gilding</p>
+          </div>
+          <div className="about-text">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quod
+              harum architecto <br /> tempora temporibus vitae unde rerum
+              repellendus similique commodi, quam, <br />
+              aliquam inventore quasi cumque ,Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. <br />
+              Officia fuga voluptatum omnis in, eveniet illum?
+            </p>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quod
+              harum architecto similique <br />
+              commodi, quam,aliquam inventore quasi cumque sit amet consectetur
+              adipisicing elit. <br />
+              Officia fuga voluptatum omnis in, eveniet illum?
+            </p>
+          </div>
+          <div className="about-end">
+            <p>OURS STORES</p>
+          </div>
+        </div>
+        <div className="about-right">
+          <img src={about} />
+        </div>
+      </div>
     </DIV>
   );
 }
@@ -151,16 +249,19 @@ const DIV = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400&family=Oswald:wght@500&display=swap");
 
   .new-collections,
-  .categories {
+  .categories,
+  .best_seller {
     margin: 80px auto;
     width: 90%;
   }
-  .new-collections-heading {
+  .new-collections-heading,
+  .best_seller-heading {
     display: flex;
     justify-content: space-between;
   }
   .new-collections-heading > div > h2,
-  .categories-heading > h2 {
+  .categories-heading > h2,
+  .best_seller-heading > div > h2 {
     font-family: "Nunito Sans", sans-serif;
     font-size: 30px;
   }
@@ -168,15 +269,19 @@ const DIV = styled.div`
     font-family: "Nunito Sans", sans-serif;
   }
   .new-collections-heading-right,
-  .categories-end {
+  .categories-end,
+  .best_seller-heading-right {
     letter-spacing: 3px;
     font-family: "Nunito Sans", sans-serif;
   }
-  .new-collections-heading-right p a ,.categories-end p a{
+  .new-collections-heading-right p a,
+  .categories-end p a,
+  .best_seller-heading-right p a {
     text-decoration: none;
     color: black;
   }
-  .new-collection-products {
+  .new-collection-products,
+  .best_seller-products {
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -209,9 +314,73 @@ const DIV = styled.div`
   .categories-items > h4:hover {
     font-size: large;
   }
+  .gift {
+    margin: 100px 0;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+  }
+  .gift img {
+    object-fit: cover;
+    width: 100%;
+    object-position: center;
+  }
+  .gift-text {
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    color: white;
+  }
+  .gift-text h2 {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 35px;
+  }
+  .gift-text p {
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .gift-text-end {
+    margin-top: 30px;
+    letter-spacing: 3px;
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .about {
+    width: 90%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .about-left {
+    width: 50%;
+  }
+  .about-right {
+    width: 40%;
+  }
+  .about-heading h2 {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 30px;
+  }
+  .about-heaing p {
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .about-text {
+    margin: 30px 0;
+    color: #5d5959;
+    font-family: "Nunito Sans", sans-serif;
+    line-height: 30px;
+  }
+  .about-right img {
+    width: 100%;
+  }
+  .about-end {
+    margin: 30px 0;
+    letter-spacing: 3px;
+    font-family: "Nunito Sans", sans-serif;
+  }
 
   @media (max-width: 780px) {
-    .new-collection-products {
+    .new-collection-products,
+    .best_seller-products {
       grid-template-columns: repeat(2, 1fr);
     }
     .categories {
@@ -221,6 +390,25 @@ const DIV = styled.div`
       width: 100%;
     }
     .categories-right {
+      width: 100%;
+    }
+    .gift-text {
+      top: 15%;
+      right: 5%;
+    }
+    .gift-text h2 {
+      font-size: 18px;
+    }
+    .gift-text p {
+      font-size: 12px;
+    }
+    .about {
+      flex-direction: column;
+    }
+    .about-left {
+      width: 100%;
+    }
+    .about-right {
       width: 100%;
     }
   }
