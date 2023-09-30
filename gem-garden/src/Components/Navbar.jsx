@@ -29,10 +29,10 @@ function Navbar() {
               <Link to="/contact">Contact Us</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/acount">Acount</Link>
+              <Link to="/acount">Account</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/bag">Bag</Link>
+              <Link to="/cart">Bag</Link>
             </li>
           </ul>
         </nav>
