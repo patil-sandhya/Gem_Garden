@@ -1,44 +1,37 @@
 import React, { useState } from "react";
-import heroimg from "../Assets/Hero_image.jpg";
 import styled from "styled-components";
 import product_1 from "../Assets/new-collection-product-1.jpg";
 import product_2 from "../Assets/new-collection-product-2.jpg";
 import product_3 from "../Assets/new-collection-product-3.jpg";
 import product_4 from "../Assets/new-collection-product-4.jpg";
 import Collectioncard from "../Components/Collectioncard";
-import collection_1 from "../Assets/collection-1.jpg"
-import collection_2 from "../Assets/collection-2.jpg"
-import collection_3 from "../Assets/collection-3.jpg"
-import collection_4 from "../Assets/collection-4.jpg"
-import collection_5 from "../Assets/collection-5.jpg"
-import collection_6 from "../Assets/collection-6.jpg"
-
-
+import collection_1 from "../Assets/collection-1.jpg";
+import collection_2 from "../Assets/collection-2.jpg";
+import collection_3 from "../Assets/collection-3.jpg";
+import collection_4 from "../Assets/collection-4.jpg";
+import collection_5 from "../Assets/collection-5.jpg";
+import collection_6 from "../Assets/collection-6.jpg";
+import { Link } from "react-router-dom";
+import HeroSection from "../Components/HeroSection";
+import BestSellerCard from "../Components/BestSellerCard";
+import best_seller_1 from "../Assets/bestSeller-1.jpg";
+import best_seller_2 from "../Assets/bestSeller-2.jpg";
+import best_seller_3 from "../Assets/bestSeller-3.jpg";
+import best_seller_4 from "../Assets/bestSeller-4.jpg";
+import gift from "../Assets/gift.jpg";
+import about from "../Assets/about.jpg";
 
 function Home() {
+  const [count, setCount] = useState(1);
 
-  const[count,setCount] = useState(1);
+  const handelCount = (val) => {
+    setCount(val);
+  };
 
-  const handelCount =(val)=>{
-    setCount(val)
-  }
-
-  console.log(count)
+  console.log(count);
   return (
     <DIV>
-      <div className="hero-img">
-        <img src={heroimg} />
-        <div className="hero-text">
-          <h1>
-            Your Jewlry Search <br />
-            Starts Here
-          </h1>
-          <p>
-            Discover the perfect jewlry pieces <br />
-            for your uique style at our store
-          </p>
-        </div>
-      </div>
+      <HeroSection />
 
       {/* hero part complete */}
 
@@ -49,7 +42,9 @@ function Home() {
             <p>Check Out the New Collections of Famous Brands</p>
           </div>
           <div className="new-collections-heading-right">
-            <p>ALL COLLLECTIONS</p>
+            <p>
+              <Link to="/ProductList"> ALL COLLLECTIONS</Link>
+            </p>
           </div>
         </div>
         <div className="new-collection-products">
@@ -85,25 +80,164 @@ function Home() {
             <p>Discover Our collection of Jewelry by categories</p>
           </div>
           <div className="categories-items">
-            <h4 onClick={()=>{handelCount(1)}}>Rings</h4>
-            <h4 onClick={()=>{handelCount(2)}}>Bracelets</h4>
-            <h4 onClick={()=>{handelCount(3)}}>Earrings</h4>
-            <h4 onClick={()=>{handelCount(4)}}>Neckless & Pendants</h4>
-            <h4 onClick={()=>{handelCount(5)}}>Watches</h4>
-            <h4 onClick={()=>{handelCount(6)}}>Men's Jewelry</h4>
+            <h4
+              onClick={() => {
+                handelCount(1);
+              }}
+            >
+              Rings
+            </h4>
+            <h4
+              onClick={() => {
+                handelCount(2);
+              }}
+            >
+              Bracelets
+            </h4>
+            <h4
+              onClick={() => {
+                handelCount(3);
+              }}
+            >
+              Earrings
+            </h4>
+            <h4
+              onClick={() => {
+                handelCount(4);
+              }}
+            >
+              Neckless & Pendants
+            </h4>
+            <h4
+              onClick={() => {
+                handelCount(5);
+              }}
+            >
+              Watches
+            </h4>
+            <h4
+              onClick={() => {
+                handelCount(6);
+              }}
+            >
+              Men's Jewelry
+            </h4>
           </div>
           <div className="categories-end">
-            <p>ALL COLLLECTIONS</p>
+            <p>
+              <Link to="/ProductList"> ALL COLLLECTIONS</Link>
+            </p>
           </div>
         </div>
         <div className="categories-right">
-          {count == 1 ? <img src = {collection_1} /> : count == 2 ? <img src={collection_2}/> : count == 3 ? <img src={collection_3}/> : count == 4 ? <img src={collection_4}/> : count == 5 ? <img src={collection_5}/> : <img src={collection_6}/>}
+          {count == 1 ? (
+            <img src={collection_1} />
+          ) : count == 2 ? (
+            <img src={collection_2} />
+          ) : count == 3 ? (
+            <img src={collection_3} />
+          ) : count == 4 ? (
+            <img src={collection_4} />
+          ) : count == 5 ? (
+            <img src={collection_5} />
+          ) : (
+            <img src={collection_6} />
+          )}
         </div>
       </div>
 
       {/* Categories done */}
 
-      
+      <div className="best_seller">
+        <div className="best_seller-heading">
+          <div>
+            <h2>Bessellers</h2>
+            <p>Check Out the New Collections of Famous Brands</p>
+          </div>
+          <div className="best_seller-heading-right">
+            <p>
+              <Link to="/ProductList">VIEW ALL</Link>
+            </p>
+          </div>
+        </div>
+        <div className="best_seller-products">
+          <BestSellerCard
+            image={best_seller_1}
+            title={"Messika"}
+            desc={"White Gold Diamond Ring"}
+            price={"1.390"}
+          />
+          <BestSellerCard
+            image={best_seller_2}
+            title={"Tiffani"}
+            desc={"Silver Necklace"}
+            price={"750"}
+          />
+          <BestSellerCard
+            image={best_seller_3}
+            title={"Bulgari"}
+            desc={"White Gold Diamond Earrings"}
+            price={"7.250"}
+          />
+          <BestSellerCard
+            image={best_seller_4}
+            title={"Cartier"}
+            desc={"White Gold Ring"}
+            price={"1.950"}
+          />
+        </div>
+      </div>
+
+      {/* Best Seller Done */}
+
+      <div className="gift">
+        <img src={gift} />
+        <div className="gift-text">
+          <h2>Gifts</h2>
+          <p>Looking for the prefect gift?</p>
+          <p>Look no further! Our extensive collection of jewelry gifts</p>
+          <p>includes something for everyone - from elegent and timeless</p>
+          <p>prices for her to bold and sophisticated desings for him</p>
+          <div className="gift-text-end">
+            <p>SHOP GIFTS</p>
+          </div>
+        </div>
+      </div>
+
+      {/* gift done  */}
+
+      <div className="about">
+        <div className="about-left">
+          <div className="about-heading">
+            <h2>About</h2>
+            <p>Gem Garden is More Then Just Gilding</p>
+          </div>
+          <div className="about-text">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quod
+              harum architecto <br /> tempora temporibus vitae unde rerum
+              repellendus similique commodi, quam, <br />
+              aliquam inventore quasi cumque ,Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. <br />
+              Officia fuga voluptatum omnis in, eveniet illum?
+            </p>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quod
+              harum architecto similique <br />
+              commodi, quam,aliquam inventore quasi cumque sit amet consectetur
+              adipisicing elit. <br />
+              Officia fuga voluptatum omnis in, eveniet illum?
+            </p>
+          </div>
+          <div className="about-end">
+            <p>OURS STORES</p>
+          </div>
+        </div>
+        <div className="about-right">
+          <img src={about} />
+        </div>
+      </div>
     </DIV>
   );
 }
@@ -114,101 +248,167 @@ export default Home;
 const DIV = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400&family=Oswald:wght@500&display=swap");
 
-  .hero-img {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    position: relative;
-    z-index: -1;
-  }
-  img {
-    object-fit: cover;
-    width: 100%;
-    object-position: center;
-  }
-  .hero-text {
-    position: absolute;
-    top: 35%;
-    left: 5%;
-    color: white;
-  }
-  .hero-text h1 {
-    font-family: "Oswald", sans-serif;
-    line-height: 50px;
-    letter-spacing: 3px;
-  }
-  .hero-text p {
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: 400;
-    line-height: 30px;
-    font-size: medium;
-    letter-spacing: 1px;
-  }
   .new-collections,
-  .categories {
+  .categories,
+  .best_seller {
     margin: 80px auto;
     width: 90%;
   }
-  .new-collections-heading {
+  .new-collections-heading,
+  .best_seller-heading {
     display: flex;
     justify-content: space-between;
   }
-  .new-collections-heading > div > h2 , .categories-heading >h2 {
+  .new-collections-heading > div > h2,
+  .categories-heading > h2,
+  .best_seller-heading > div > h2 {
     font-family: "Nunito Sans", sans-serif;
     font-size: 30px;
   }
   .new-collections-heading > div > p {
     font-family: "Nunito Sans", sans-serif;
   }
-  .new-collections-heading-right, .categories-end {
+  .new-collections-heading-right,
+  .categories-end,
+  .best_seller-heading-right {
     letter-spacing: 3px;
     font-family: "Nunito Sans", sans-serif;
   }
-  .new-collection-products {
+  .new-collections-heading-right p a,
+  .categories-end p a,
+  .best_seller-heading-right p a {
+    text-decoration: none;
+    color: black;
+  }
+  .new-collection-products,
+  .best_seller-products {
     margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
-  .categories{
+  .categories {
     display: flex;
   }
-  .categories-left{
+  .categories-left {
     width: 60%;
   }
-  .categories-right{
+  .categories-right {
     width: 50%;
     padding: 10px;
   }
-  .categories-right img{
+  .categories-right img {
     width: 100%;
   }
-  .categories-items{
-    font-family: 'Nunito Sans', sans-serif;
+  .categories-items {
+    font-family: "Nunito Sans", sans-serif;
     cursor: pointer;
     margin: 50px 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-  .categories-items >h4{
+  .categories-items > h4 {
     transition: 0.3s;
   }
-  .categories-items >h4:hover{
+  .categories-items > h4:hover {
     font-size: large;
   }
+  .gift {
+    margin: 100px 0;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+  }
+  .gift img {
+    object-fit: cover;
+    width: 100%;
+    object-position: center;
+  }
+  .gift-text {
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    color: white;
+  }
+  .gift-text h2 {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 35px;
+  }
+  .gift-text p {
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .gift-text-end {
+    margin-top: 30px;
+    letter-spacing: 3px;
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .about {
+    width: 90%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .about-left {
+    width: 50%;
+  }
+  .about-right {
+    width: 40%;
+  }
+  .about-heading h2 {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 30px;
+  }
+  .about-heaing p {
+    font-family: "Nunito Sans", sans-serif;
+  }
+  .about-text {
+    margin: 30px 0;
+    color: #5d5959;
+    font-family: "Nunito Sans", sans-serif;
+    line-height: 30px;
+  }
+  .about-right img {
+    width: 100%;
+  }
+  .about-end {
+    margin: 30px 0;
+    letter-spacing: 3px;
+    font-family: "Nunito Sans", sans-serif;
+  }
 
-  @media (max-width: 780px){
-    .new-collection-products{
-      grid-template-columns: repeat(2,1fr);
+  @media (max-width: 780px) {
+    .new-collection-products,
+    .best_seller-products {
+      grid-template-columns: repeat(2, 1fr);
     }
-    .categories{
+    .categories {
       flex-direction: column;
     }
-    .categories-left{
+    .categories-left {
       width: 100%;
     }
-    .categories-right{
+    .categories-right {
+      width: 100%;
+    }
+    .gift-text {
+      top: 15%;
+      right: 5%;
+    }
+    .gift-text h2 {
+      font-size: 18px;
+    }
+    .gift-text p {
+      font-size: 12px;
+    }
+    .about {
+      flex-direction: column;
+    }
+    .about-left {
+      width: 100%;
+    }
+    .about-right {
       width: 100%;
     }
   }

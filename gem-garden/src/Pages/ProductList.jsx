@@ -5,10 +5,10 @@ import { getProduct } from "../Redux/Product/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Sidebar } from "../Components/Sidebar";
 import { useSearchParams } from "react-router-dom";
+import HeroSection from "../Components/HeroSection";
 
 export const ProductList = () => {
-
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [limit, setLimit] = useState(20);
 
@@ -18,10 +18,7 @@ export const ProductList = () => {
       isError: store.productReducer.isError,
       isLoading: store.productReducer.isLoading,
     };
-  },shallowEqual);
-
-  
-
+  }, shallowEqual);
 
   useEffect(() => {
     let params = {
@@ -29,25 +26,26 @@ export const ProductList = () => {
         // ?_page=1&_limit=20
         // _page: 1,
         _limit: limit,
-        category: searchParams.getAll('category'),
-        brand: searchParams.getAll('brand'),
-        _sort: searchParams.get('price') && 'price',
-        _order: searchParams.get('price')
+        category: searchParams.getAll("category"),
+        brand: searchParams.getAll("brand"),
+        _sort: searchParams.get("price") && "price",
+        _order: searchParams.get("price"),
       },
-      
+
       // _sort=votes&_order=asc
     };
     dispatch(getProduct(params));
   }, [searchParams, limit]);
 
   const handleButton = () => {
-    setLimit(limit + 20)
+    setLimit(limit + 20);
     // console.log('button click');
   };
 
   return (
     <>
-    <Sidebar />
+      <HeroSection />
+      <Sidebar />
       <DIV>
         {products.map((el, i) => {
           return <ProductCard key={el.id} {...el} />;
@@ -92,10 +90,10 @@ const BUTTON = styled.div`
     border-radius: 8px;
     letter-spacing: 2px;
     font-size: 15px;
-    transition: .1s;
+    transition: 0.1s;
   }
 
-  .Load-Button:hover{
+  .Load-Button:hover {
     border: 1px solid #292525;
   }
 `;
