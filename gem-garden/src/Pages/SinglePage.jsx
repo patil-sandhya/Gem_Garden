@@ -5,6 +5,8 @@ import { ProductCard } from "../ProductCard";
 import { addToBag, addToCart } from "../Redux/action" // Assuming you have these action creators
 
 export const SingleProduct = () => {
+
+  
   const { id } = useParams();
   const [data, setData] = useState({});
   const products = useSelector((store) => store.productReducer.products);
