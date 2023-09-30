@@ -160,6 +160,3 @@ const DIV = styled.div`
     z-index: 10;
   }
 `
-
-  
-

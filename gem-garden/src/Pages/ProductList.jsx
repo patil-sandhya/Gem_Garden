@@ -130,7 +130,7 @@ const BUTTON = styled.div`
   .Load-Button:hover{
     /* border: 1px solid #292525; */
     background-color: #292525;
-    color: white
+    color: white;
     transition: 0.1s;
   }
 
