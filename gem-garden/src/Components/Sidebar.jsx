@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import styled from "styled-components";
 
 export const Sidebar = () => {
 
@@ -9,22 +9,25 @@ export const Sidebar = () => {
     const [categoryDiv, setCategoryDiv] = useState(false)
     const [priceDiv, setPriceDiv] = useState(false)
 
-    const [category, setcategory] = useState((searchParams.getAll('category') || []))
-    const [brand, setbrand] = useState((searchParams.getAll('brand') || []))
-    const [price, setPrice] = useState(searchParams.get('price') || '')
+  const [category, setcategory] = useState(
+    searchParams.getAll("category") || []
+  );
+  const [brand, setbrand] = useState(searchParams.getAll("brand") || []);
+  const [price, setPrice] = useState(searchParams.get("price") || "");
 
-    const handleCategory = (e)=>{
-        const {value} = e.target
-        let newCategory = [...category]
-        if(newCategory.includes(value)){
-            newCategory = newCategory.filter((el, i)=>el !== value)
-        } else {
-            newCategory.push(value)
-        }
-        setcategory(newCategory)
+
+  const handleCategory = (e) => {
+    const { value } = e.target;
+    let newCategory = [...category];
+    if (newCategory.includes(value)) {
+      newCategory = newCategory.filter((el, i) => el !== value);
+    } else {
+      newCategory.push(value);
     }
+    setcategory(newCategory);
+  };
 
-    const handleBrand = (e)=>{
+   const handleBrand = (e)=>{
         const {value} = e.target
         let newBrand = [...brand]
         if(newBrand.includes(value)){
@@ -41,21 +44,20 @@ export const Sidebar = () => {
         // console.log(value);
     }
 
-    useEffect(()=>{
-        if(price === 'All'){
-            setPrice('')
-        }
+  useEffect(() => {
+    if (price === "All") {
+      setPrice("");
+    }
 
-        let params = {
-            category,
-            brand,
-        }
-        price && (params.price = price)
-        setSearchParams(params)
-    },[category, brand, price])
-
-
-
+    let params = {
+      category,
+      brand,
+    };
+    price && (params.price = price);
+    setSearchParams(params);
+  }, [category, brand, price]);
+  
+  
   return (<>
     <DIV>
         <div className='parent-div' > 
@@ -113,6 +115,16 @@ export const Sidebar = () => {
 
 
 const DIV = styled.div`
+  .parent-div {
+    transform: 1s;
+    color: white;
+    background-color: #292525;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    cursor: pointer;
+  }
+
 
 
     .parent-div{
@@ -155,3 +167,11 @@ const DIV = styled.div`
         scale: 1.2;
     }
 `
+
+  .child-brand {
+    position: absolute;
+    background-color: #292525;
+    z-index: 10;
+  }
+`;
+
