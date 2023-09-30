@@ -8,7 +8,8 @@ export const getProduct = (params) => (dispatch)=>{
 
     axios.get(`https://gem-gardern-mock-api.onrender.com/products`,params)
     .then((res)=>{
-        dispatch({type: GET_PRODUCT_SUCCESS, payload: res.data})
+        dispatch({type: GET_PRODUCT_SUCCESS, payload: res})
+        // console.log(res.headers.x-total-count);
     })
     
     .catch((res)=>{

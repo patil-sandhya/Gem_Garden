@@ -5,6 +5,8 @@ import { getProduct } from "../Redux/Product/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Sidebar } from "../Components/Sidebar";
 import { useSearchParams } from "react-router-dom";
+import Loading_Indicator from '../Assets/Loading_Indicator.gif'
+
 
 export const ProductList = () => {
 
@@ -12,16 +14,17 @@ export const ProductList = () => {
   const dispatch = useDispatch();
   const [limit, setLimit] = useState(20);
 
-  const { isError, isLoading, products } = useSelector((store) => {
+  const { isError, isLoading, products, totalProductFetch } = useSelector((store) => {
     return {
       products: store.productReducer.products,
       isError: store.productReducer.isError,
       isLoading: store.productReducer.isLoading,
+      totalProductFetch: store.productReducer.totalProductFetch
     };
   },shallowEqual);
 
   
-
+// console.log(totalProductFetch);
 
   useEffect(() => {
     let params = {
@@ -45,36 +48,64 @@ export const ProductList = () => {
     // console.log('button click');
   };
 
+  // if(isLoading){
+  //   return <LOADING><div className="loading-indicator"><img src={Loading_Indicator} /></div></LOADING>
+  // }
+
   return (
     <>
     <Sidebar />
       <DIV>
-        {products.map((el, i) => {
-          return <ProductCard key={el.id} {...el} />;
-        })}
+
+            <div className="grid-card-parent" >
+            {products.map((el, i) => {
+              return <ProductCard key={el.id} {...el} />
+            })}
+          </div>
+          {(isLoading) && <div className="loading-indicator"><img style={{backgroundColor: 'green'}} src={Loading_Indicator} /></div>}
       </DIV>
 
-      {!isLoading && (
+      {/* {isLoading ? <div className="loading-indicator"><img src={Loading_Indicator} /></div> : ( */}
         <BUTTON>
-          <div className="Load-div">
+          {products.length == totalProductFetch ? "" : <div className="Load-div">
             <button onClick={handleButton} className="Load-Button">
               LOAD MORE
             </button>
-          </div>
+          </div>}
         </BUTTON>
-      )}
+      {/* )} */}
     </>
   );
 };
 
-const DIV = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 30px;
-  row-gap: 40px;
-  padding: 50px;
-`;
+const LOADING = styled.div`
+`
 
+const DIV = styled.div`
+
+  .grid-card-parent{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 30px;
+    row-gap: 40px;
+    padding: 50px;
+  }
+  
+  .loading-indicator{
+    background-color: red;
+    width: 25%;
+    display: flex;
+    margin: auto;
+
+  }
+
+  @media screen and (min-width: 1000px) and (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  `;
+  
 const BUTTON = styled.div`
   .Load-div {
     display: flex;
@@ -92,10 +123,13 @@ const BUTTON = styled.div`
     border-radius: 8px;
     letter-spacing: 2px;
     font-size: 15px;
-    transition: .1s;
+    transition: .5s;
   }
 
   .Load-Button:hover{
-    border: 1px solid #292525;
+    /* border: 1px solid #292525; */
+    background-color: #292525;
+    color: white
+
   }
 `;
