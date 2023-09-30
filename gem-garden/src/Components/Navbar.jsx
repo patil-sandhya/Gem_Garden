@@ -26,13 +26,13 @@ function Navbar() {
         <nav>
           <ul className={`nav-menu ${menu ? "active" : ""}`}>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/">Contact Us</Link>
+              <Link to="/contact">Contact Us</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/about">Acount</Link>
+              <Link to="/acount">Acount</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/servicess">Bag</Link>
+              <Link to="/bag">Bag</Link>
             </li>
           </ul>
         </nav>
