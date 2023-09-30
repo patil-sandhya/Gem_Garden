@@ -74,8 +74,10 @@ const Cart = () => {
         </LeftSection>
         <RightSection>
           {/* Content for the right section */}
+          <Gift>
+          </Gift>
           <h2>Payment Details</h2>
-          <p>Apply Cupon</p>
+          <p>Apply Coupon</p>
         </RightSection>
       </MainSection>
     </Container>
@@ -86,6 +88,9 @@ export default Cart;
 
 const Container = styled.div`
   margin: 60px;
+`;
+const Gift = styled.div`
+ display: flex;
 `;
 
 const MainSection = styled.div`
