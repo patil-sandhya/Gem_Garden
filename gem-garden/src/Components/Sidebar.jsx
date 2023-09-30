@@ -124,22 +124,10 @@ const DIV = styled.div`
     position: relative;
     cursor: pointer;
   }
-
-
-
-    .parent-div{
-
-        transform: 1s;
-        color: white;
-        background-color: #292525;
-        display: flex;
-        justify-content: space-around;
-        position: relative;
-    }
-
-    .filter{
-        letter-spacing: 1px;
-    }
+  
+  .filter{
+    letter-spacing: 1px;
+  }
 
     .filter-options{
         position: absolute;
@@ -166,12 +154,12 @@ const DIV = styled.div`
     .filter-title:hover{
         scale: 1.2;
     }
-`
-
-  .child-brand {
+    .child-brand {
     position: absolute;
     background-color: #292525;
     z-index: 10;
   }
-`;
+`
+
+  
 
