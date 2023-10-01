@@ -5,110 +5,129 @@ import { getProduct } from "../Redux/Product/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Sidebar } from "../Components/Sidebar";
 import { useSearchParams } from "react-router-dom";
-import Loading_Indicator from '../Assets/Loading_Indicator.gif'
+import Loading_Indicator from "../Assets/Loading_Indicator.gif";
 import HeroSection from "../Components/HeroSection";
-
 
 export const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [limit, setLimit] = useState(20);
 
-  const { isError, isLoading, products, totalProductFetch } = useSelector((store) => {
-    return {
-      products: store.productReducer.products,
-      isError: store.productReducer.isError,
-      isLoading: store.productReducer.isLoading,
-      totalProductFetch: store.productReducer.totalProductFetch
-    };
-  },shallowEqual);
-
-  
-// console.log(totalProductFetch);
+  const { isError, isLoading, products, totalProductFetch } = useSelector(
+    (store) => {
+      return {
+        products: store.productReducer.products,
+        isError: store.productReducer.isError,
+        isLoading: store.productReducer.isLoading,
+        totalProductFetch: store.productReducer.totalProductFetch,
+      };
+    },
+    shallowEqual
+  );
 
   useEffect(() => {
     let params = {
       params: {
-        // ?_page=1&_limit=20
-        // _page: 1,
         _limit: limit,
         category: searchParams.getAll("category"),
         brand: searchParams.getAll("brand"),
         _sort: searchParams.get("price") && "price",
         _order: searchParams.get("price"),
       },
-
-      // _sort=votes&_order=asc
     };
     dispatch(getProduct(params));
   }, [searchParams, limit]);
 
   const handleButton = () => {
     setLimit(limit + 20);
-    // console.log('button click');
   };
 
-  // if(isLoading){
-  //   return <LOADING><div className="loading-indicator"><img src={Loading_Indicator} /></div></LOADING>
-  // }
+  if (isError) {
+    return (
+      <ERROR>
+        <h1>Oops error 404❌❗❕</h1>
+      </ERROR>
+    );
+  }
 
   return (
     <>
       <HeroSection />
       <Sidebar />
       <DIV>
-
-            <div className="grid-card-parent" >
-            {products.map((el, i) => {
-              return <ProductCard key={el.id} {...el} />
-            })}
-          </div>
-          {(isLoading) && <div className="loading-indicator"><img style={{backgroundColor: 'green'}} src={Loading_Indicator} /></div>}
+        <div className="grid-card-parent">
+          {products.map((el, i) => {
+            return <ProductCard key={el.id} {...el} />;
+          })}
+        </div>
       </DIV>
-
-      {/* {isLoading ? <div className="loading-indicator"><img src={Loading_Indicator} /></div> : ( */}
-        <BUTTON>
-          {products.length == totalProductFetch ? "" : <div className="Load-div">
-            <button onClick={handleButton} className="Load-Button">
-              LOAD MORE
-            </button>
-          </div>}
-        </BUTTON>
-      {/* )} */}
+      <BUTTON>
+        <DIV>
+          {products.length == totalProductFetch ? (
+            ""
+          ) : isLoading ? (
+            <div className="loading-indicator">
+              <img src={Loading_Indicator} />
+            </div>
+          ) : (
+            <div className="Load-btn-div">
+              <button onClick={handleButton} className="Load-Button">
+                LOAD MORE
+              </button>
+            </div>
+          )}
+        </DIV>
+      </BUTTON>
     </>
   );
 };
 
-const LOADING = styled.div`
-`
+const ERROR = styled.div`
+  width: 25%;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+`;
 
 const DIV = styled.div`
-
-  .grid-card-parent{
+  .grid-card-parent {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 30px;
     row-gap: 40px;
     padding: 50px;
   }
-  
-  .loading-indicator{
-    background-color: red;
+
+  .loading-indicator {
     width: 25%;
     display: flex;
     margin: auto;
-
+    justify-content: center;
+    margin-bottom: 100px;
   }
 
-  @media screen and (min-width: 1000px) and (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media screen and (max-width: 1200px) {
+    .grid-card-parent {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
+  @media screen and (max-width: 900px) {
+    .grid-card-parent {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
-  `;
-  
+  @media screen and (max-width: 600px) {
+    .grid-card-parent {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+`;
+
 const BUTTON = styled.div`
-  .Load-div {
+  .Load-btn-div {
     display: flex;
     margin-bottom: 50px;
     justify-content: center;
@@ -124,11 +143,10 @@ const BUTTON = styled.div`
     border-radius: 8px;
     letter-spacing: 2px;
     font-size: 15px;
-    transition: .5s;
+    transition: 0.5s;
   }
 
-  .Load-Button:hover{
-    /* border: 1px solid #292525; */
+  .Load-Button:hover {
     background-color: #292525;
     color: white;
     transition: 0.1s;
@@ -136,5 +154,35 @@ const BUTTON = styled.div`
 
   .Load-Button:hover {
     border: 1px solid #292525;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .Load-Button {
+      font-size: 13px;
+      width: 13%;
+      height: 6vh;
+      padding: 5px;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .Load-Button {
+      font-size: 11px;
+      width: 13%;
+      height: 5vh;
+      padding: 5px;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .Load-Button {
+      font-size: 9px;
+      width: 15%;
+      height: 4vh;
+      padding: 5px;
+      letter-spacing: 0.5px;
+    }
   }
 `;

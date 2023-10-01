@@ -1,166 +1,158 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
-
-export const ProductCard = ({id, price, about, avatar, brand }) => {
-
-
-
+export const ProductCard = ({ id, price, about, avatar, brand }) => {
   return (
     <DIV about={about}>
-        <div className='card-div' >
-            <div className='card-image-div'><img className='card-image' src={avatar}  alt="jwellery" /></div>
-            {/* {about.length <= 35 ? about : about.substring(0, 35 - 3) + '...'} */}
-            <p className='card-about' id='card-about'>{about}</p>
-
-            <p className='card-brand'>{brand}</p>
-            <div className='card-button-div'>
-                <button className='card-btn' id='cart-btn'>Add to Cart</button>
-                <button className='card-btn' id='buy-btn' >Buy Now</button>
-            </div>
-            <p className='card-price'>₹ {price}</p>
+      <div className="card-div">
+        <div className="card-image-div">
+          <img className="card-image" src={avatar} alt="jwellery" />
         </div>
 
+        <p className="card-about" id="card-about">
+          {about.length <= 30 ? about : about.substring(0, 30 - 3) + "..."}
+        </p>
 
+        <p className="card-brand">{brand}</p>
+        <div className="card-button-div">
+          <button className="card-btn" id="cart-btn">
+            Add to Cart
+          </button>
+          <button className="card-btn" id="buy-btn">
+            Buy Now
+          </button>
+        </div>
+        <p className="card-price">₹ {price}</p>
+      </div>
     </DIV>
-  )
-}
-
+  );
+};
 
 const DIV = styled.div`
-    
-    /* about{
+  /* about{
         {({about}) => ()}
     } */
-        
+  transition: 1s;
 
-    /* text-align: left; */
-    /* padding: 0; */
-    transition: 1s;
+  .card-div {
+    transition: 0.1s;
+    padding: 20px;
+    border: 1px solid #c7c7c7;
+    border-radius: 20%;
+    position: relative;
+  }
 
-    .card-div{
-        transition: .1s;
-        padding-inline: 20px;
-        padding-block: 20px;
-        border: 1px solid #c7c7c7;
-        border-radius: 20%;
-        position: relative;
-        /* z-index: 1; */
-    }
-    
-    .card-div:hover{
-        border: 2px solid #292525;
+  .card-div:hover {
+    border: 2px solid #292525;
+  }
 
-    }
-    
-    .card-div:hover .card-button-div{
-        display: flex;
-        transform: translateY(0%);
-    }
+  .card-div:hover .card-button-div {
+    display: flex;
+    transform: translateY(0%);
+  }
 
-    .card-div:hover .card-about, .card-div:hover .card-brand{
-        display: none;
-    }
+  .card-div:hover .card-about,
+  .card-div:hover .card-brand {
+    display: none;
+  }
 
-    /* .card-div:hover .card-btn  */
+  .card-image-div {
+    width: 80%;
+    /* height: 35vh; */
+    margin: auto;
+  }
 
+  .card-image {
+    /* height: 30vh; */
+    width: 100%;
+    margin: auto;
+    transition: 0.3s;
+    max-height: 300px;
+    object-fit: cover;
+  }
 
-    .card-image-div{
-        width: 70%;
-        margin: auto;
-        /* border: 1px solid grey; */
-    }
-    
-    .card-image{
-        width: 100%;
-        /* border: 1px solid grey; */
-        margin: auto;
-        transition: .3s;
-        max-height: 300px;
-        object-fit: cover;
-    }
+  .card-image:hover {
+    border-radius: 50%;
+    transform: rotate(20deg) scale(1.1);
+  }
 
-    .card-image:hover{
-        /* transform: scale(1.1); */
-        border-radius: 50%;
-        transform: rotate(20deg) scale(1.1);
-        /* transform: rotate(10deg) */
-    }
+  .card-about {
+    font-weight: 500;
+    margin: 0;
+    margin-top: 8px;
+    padding: 1px;
+    font-family: "Nunito Sans", sans-serif;
+    /* white-space: nowrap; */
+    overflow: auto;
+    text-overflow: ellipsis;
+  }
 
-    .card-about{
-        font-weight: 500;
-        margin: 0;
-        margin-top: 8px;
-        padding: 1px;
-        font-family: "Nunito Sans", sans-serif;
-        /* white-space: nowrap; */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        /* border: 1px solid blue; */
-    }
+  .card-brand,
+  .card-price {
+    padding: 2px;
+    color: #303030;
+    font-family: Oswald;
+    letter-spacing: 1px;
+    margin: 0;
+  }
 
-    /* #card-about{
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    } */
-  
-    .card-brand, .card-price{
-        padding: 2px;
-        color: #303030;
-        font-family: Oswald;
-        letter-spacing: 1px;
-        margin: 0;
-        /* margin-left: 10px; */
-        /* border: 1px solid blue; */
-    }
+  .card-button-div {
+    display: flex;
+    justify-content: space-between;
+    display: none;
+  }
 
-    .card-button-div{
-        /* border: 1px solid red; */
-        display: flex;
-        justify-content: space-between;
-        display: none;
-    }
-
-    
-
-    .card-btn{
-        width: 30%;
-        padding: 5px;
-        height: 5vh;
-        border: none;
-        font-family: "Nunito Sans", sans-serif;
-        margin-block: 10px;
-        background-color: white;
-        border: 2px solid #292525;
-        transition: transform .3s ease-in-out;
-        transform: translateY(20%);
-    /* text-align: center; */
-    /* align-items: center; */
-    /* background-color: white; */
-    /* border: 1px solid #aeaeae; */
+  .card-btn {
+    width: 30wh;
+    padding: 5px;
+    height: 5vh;
+    border: none;
+    font-family: "Nunito Sans", sans-serif;
+    margin-block: 10px;
+    background-color: white;
+    border: 2px solid #292525;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(20%);
     border-radius: 8px;
-    /* letter-spacing: 1px; */
-    font-size: 14px;
-    /* transition: .5s; */
-    /* background-color: #292525; */
-    /* color: whitesmoke */
+    font-size: 13px;
+  }
+
+  #buy-btn {
+    background-color: #292525;
+    color: white;
+  }
+
+  #cart-btn:hover {
+    background-color: #292525;
+    color: white;
+  }
+
+  #buy-btn:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #292525;
+  }
+
+  @media screen and (max-width: 900px) {
+    .card-div {
+      padding-bottom: 25px;
+      padding-left: 25px;
+    }
+    .card-about,
+    .card-brand,
+    .card-price {
+      font-size: smaller;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .card-div {
+      padding-bottom: 30px;
+      padding-left: 30px;
     }
 
-    #buy-btn{
-        background-color: #292525;
-        color: white;
+    .card-image-div {
+      width: 80%;
     }
-
-    #cart-btn:hover{
-        background-color: #292525;
-        color: white;
-    }
-
-    #buy-btn:hover{
-        background-color: white;
-        color: black;
-        border: 2px solid #292525;
-    }
-    
-`
+  }
+`;
