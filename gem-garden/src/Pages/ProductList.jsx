@@ -7,12 +7,10 @@ import { Sidebar } from "../Components/Sidebar";
 import { useSearchParams } from "react-router-dom";
 import Loading_Indicator from "../Assets/Loading_Indicator.gif";
 import HeroSection from "../Components/HeroSection";
-
 export const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [limit, setLimit] = useState(20);
-
   const { isError, isLoading, products, totalProductFetch } = useSelector(
     (store) => {
       return {
@@ -24,7 +22,6 @@ export const ProductList = () => {
     },
     shallowEqual
   );
-
   useEffect(() => {
     let params = {
       params: {
@@ -37,19 +34,17 @@ export const ProductList = () => {
     };
     dispatch(getProduct(params));
   }, [searchParams, limit]);
-
   const handleButton = () => {
     setLimit(limit + 20);
   };
-
   if (isError) {
     return (
       <ERROR>
-        <h1>Oops error 404❌❗❕</h1>
+        <h1>Oops error 404</h1>
       </ERROR>
     );
   }
-
+  console.log(products)
   return (
     <>
       <HeroSection />
@@ -61,7 +56,6 @@ export const ProductList = () => {
           })}
         </div>
       </DIV>
-
       <BUTTON>
         {/* <DIV> */}
           {products.length == totalProductFetch ? (
@@ -82,7 +76,6 @@ export const ProductList = () => {
     </>
   );
 };
-
 const ERROR = styled.div`
   width: 25%;
   padding-top: 100px;
@@ -90,9 +83,7 @@ const ERROR = styled.div`
   justify-content: center;
   margin: 0;
 `;
-
 const DIV = styled.div`
-
   .grid-card-parent {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -100,34 +91,28 @@ const DIV = styled.div`
     row-gap: 40px;
     padding: 50px;
   }
-
-
   @media screen and (max-width: 1200px) {
     .grid-card-parent {
       grid-template-columns: repeat(3, 1fr);
     }
   }
-
   @media screen and (max-width: 900px) {
     .grid-card-parent {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-
   @media screen and (max-width: 600px) {
     .grid-card-parent {
       grid-template-columns: repeat(1, 1fr);
     }
   }
 `;
-
 const BUTTON = styled.div`
   .Load-btn-div {
     display: flex;
     margin-bottom: 50px;
     justify-content: center;
   }
-
   .loading-indicator {
     width: 25%;
     display: flex;
@@ -135,32 +120,27 @@ const BUTTON = styled.div`
     justify-content: center;
     margin-bottom: 100px;
   }
-
   .Load-Button {
     width: 10%;
     height: 7vh;
     text-align: center;
     align-items: center;
     background-color: white;
-    border: 1px solid #aeaeae;
+    border: 1px solid #AEAEAE;
     border-radius: 8px;
     letter-spacing: 1px;
     font-family: "Nunito Sans", sans-serif;
     font-size: 15px;
     transition: 0.5s;
   }
-
   .Load-Button:hover {
     background-color: #292525;
     color: white;
     transition: 0.1s;
   }
-
   .Load-Button:hover {
     border: 1px solid #292525;
   }
-
-
   @media screen and (max-width: 1200px) {
     .Load-Button {
       font-size: 13px;
@@ -170,7 +150,6 @@ const BUTTON = styled.div`
       letter-spacing: 1px;
     }
   }
-
   @media screen and (max-width: 900px) {
     .Load-Button {
       font-size: 11px;
@@ -180,7 +159,6 @@ const BUTTON = styled.div`
       letter-spacing: 1px;
     }
   }
-
   @media screen and (max-width: 600px) {
     .Load-Button {
       font-size: 9px;

@@ -4,7 +4,7 @@ import styled from "styled-components";
  import { useSelector, useDispatch } from "react-redux";
  import { useParams } from "react-router-dom";
  import { ProductCard } from "../Components/ProductCard";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { updateCart } from "../Redux/Cart/action";
 import BestSellerCard from "../Components/BestSellerCard";
 import best_seller_1 from "../Assets/bestSeller-1.jpg";

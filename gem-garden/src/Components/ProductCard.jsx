@@ -1,9 +1,32 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import styled from "styled-components";
-import {Link} from 'react-router-dom'
-
+import {Link, useParams} from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { updateCart } from "../Redux/Cart/action";
 
 export const ProductCard = ({ id, price, about, avatar, brand }) => {
+  const userId = JSON.parse(localStorage.getItem("userId")) ;
+
+  //const { id } = useParams();
+  //const [data, setData] = useState({});
+  const products = useSelector((store) => store.productReducer.products);
+  const cart = useSelector((store) => store.CartReducer.cart);
+
+  const dispatch = useDispatch();
+
+  
+
+  const AddtoCart = () => {
+    let newCart = [...cart, { id,price,about,avatar,brand, qty: 1 }];
+    // let count = 0;
+    let res = cart.filter((item) => item.id === +id);
+
+    if (res.length > 0) {
+      alert("already in cart");
+    } else {
+      dispatch(updateCart(userId, newCart));
+    }
+  };
   return (
     <DIV about={about}>
         <div className="card-div">
@@ -20,7 +43,7 @@ export const ProductCard = ({ id, price, about, avatar, brand }) => {
 
           <p className="card-brand">{brand}</p>
           <div className="card-button-div">
-            <button className="card-btn" id="cart-btn">
+            <button className="card-btn" id="cart-btn" onClick={AddtoCart}>
               Add to Cart
             </button>
             <button className="card-btn" id="buy-btn">
