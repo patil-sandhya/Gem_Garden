@@ -1,52 +1,63 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { getUserData, loginSuccess, loginFailure } from "../Redux/AuthRedux/action";
+import {
+  getUserData,
+  loginSuccess,
+  loginFailure,
+} from "../Redux/AuthRedux/action";
 import styled from "styled-components";
 
 let loginUser = {
-  email: "john.doe@example.com",
-  password: "aer2329adfk",
+  email: "",
+  password: "",
 };
 
 const Login = () => {
   const [state, setState] = useState(loginUser);
-  const isAuth = useSelector((store)=>store.AuthReducer.isAuth)
-  let userData = useSelector((store)=>store.AuthReducer.userData)
-  const isLogin = useSelector((store)=>store.AuthReducer.isLogin);
+  const isAuth = useSelector((store) => store.AuthReducer.isAuth);
+  const userData = useSelector((store) => store.AuthReducer.userData);
+  const isLogin = useSelector((store) => store.AuthReducer.isLogin);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
   const comingFrom = location.state?.from?.pathname || "/";
-
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    
-    setState((prev) =>{
-        return {
-            ...prev,
-            [name]:value,
-        }
-    })
+
+    setState((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
-  useEffect(()=>{
-    dispatch(getUserData())
-  },[]);
-  
+  useEffect(() => {
+    dispatch(getUserData());
+  }, []);
+
   const handleAuth = (e) => {
     e.preventDefault();
-    userData = userData.filter((ele)=>{
-      return ele.email==state.email && ele.password==state.password;
-    })
-    // console.log(userData)
-    if(userData.length ===1 && userData[0].email==state.email && userData[0].password==state.password){
+    console.log(state);
+    console.log(userData);
+
+    let newUserData = userData.filter(
+      (ele) => ele.email === state.email && ele.password === state.password
+    );
+
+    // console.log(newUserData);
+    if (
+      userData.length === 1 &&
+      userData[0].email == state.email &&
+      userData[0].password == state.password
+    ) {
       localStorage.clear();
-      localStorage.setItem("userId",userData[0].id);
+      localStorage.setItem("userId", userData[0].id);
+      dispatch(loginSuccess(state));
       navigate(comingFrom, { replace: true });
-      dispatch(loginSuccess(state))
-    }else{
+    } else {
       dispatch(loginFailure());
     }
   };
@@ -54,31 +65,33 @@ const Login = () => {
   return (
     <DIV>
       <div className="login">
-      <form onSubmit={handleAuth}>
-        {isLogin ? <h2>Invalid user/password</h2>:""}
-      <lable for="email" >Email</lable>
-        <input
-          type="email"
-          name="email"
-          placeholder="Username"
-          value={state.email}
-          onChange={handleChange}
-        />
-        <lable for="password" >Password</lable>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          onChange={handleChange}
-        />
-        <p><Link to="/" >Forgot Password?</Link></p>
-        <button type="submit"> Login</button>
-        <p>
-          Don't have an account?<Link to="/signup">Sign Up</Link>
-        </p>
-      </form>
-    </div>
+        <form onSubmit={handleAuth}>
+          {isLogin ? <h2>Invalid user/password</h2> : ""}
+          <lable for="email">Email</lable>
+          <input
+            type="email"
+            name="email"
+            placeholder="Username"
+            value={state.email}
+            onChange={handleChange}
+          />
+          <lable for="password">Password</lable>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={state.password}
+            onChange={handleChange}
+          />
+          <p>
+            <Link to="/">Forgot Password?</Link>
+          </p>
+          <button type="submit"> Login</button>
+          <p>
+            Don't have an account?<Link to="/signup">Sign Up</Link>
+          </p>
+        </form>
+      </div>
     </DIV>
   );
 };
@@ -95,32 +108,29 @@ const DIV = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background-color: rgba(41,37,37,.05);
+    background-color: rgba(41, 37, 37, 0.05);
     margin: auto;
     padding: 100px;
-
-
   }
   .login > form {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    background-color: rgba(255,255,255,.9);
-    font-family: 'Nunito Sans';
-    padding:100px 75px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: "Nunito Sans";
+    padding: 100px 75px;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
-  .login > form > lable{
-
+  .login > form > lable {
   }
-  .login > form > input{
-    padding:5px 10px;
-    font-size:18px;
-    margin-bottom:10px;
+  .login > form > input {
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
   }
-  .login > form > button{
-    align-items:center;
-    justify-content:center;
+  .login > form > button {
+    align-items: center;
+    justify-content: center;
     background-color: black;
     color: #fff;
     border: none;
@@ -129,8 +139,6 @@ const DIV = styled.div`
     border-radius: 5px;
     cursor: pointer;
     width: 200px;
-    margin:auto;
+    margin: auto;
   }
-
-
 `;
