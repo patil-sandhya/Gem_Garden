@@ -33,6 +33,7 @@ export const reducer = (state = initialState, { type, payload }) => {
 
     default:
       return state;
+      
   }
 };
 
