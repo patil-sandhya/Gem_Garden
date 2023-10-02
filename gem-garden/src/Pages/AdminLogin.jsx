@@ -5,11 +5,11 @@ import { getUserData, loginSuccess, loginFailure } from "../Redux/AuthRedux/acti
 import styled from "styled-components";
 
 let loginUser = {
-  email: "john.doe@example.com",
-  password: "aer2329adfk",
+  email: "",
+  password: "",
 };
 
-const Login = () => {
+const AdminLogin = () => {
   const [state, setState] = useState(loginUser);
   const isAuth = useSelector((store)=>store.AuthReducer.isAuth)
   let userData = useSelector((store)=>store.AuthReducer.userData)
@@ -17,7 +17,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const location = useLocation()
-  const comingFrom = location.state?.from?.pathname || "/";
+  const comingFrom = location.state?.from?.pathname || "/admin";
 
 
   const handleChange = (e) => {

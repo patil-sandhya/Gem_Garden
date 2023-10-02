@@ -7,6 +7,7 @@ import SignUp from '../Pages/SignUp'
 import Cart from './Cart'
 import { SingleProduct } from '../Pages/SinglePage'
 import PasswordRecovery from '../Pages/PasswordRecovery'
+import AdminLogin from "../Pages/AdminLogin"
 
 
 
@@ -21,7 +22,7 @@ function AllRoutes() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
- 
+        <Route path='/adminlogin' element={<AdminLogin />} />
         <Route path='/product/:id' element={<SingleProduct/>}/>
       </Routes>
     </div>

@@ -20,6 +20,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const location = useLocation()
+  const comingFrom = location.state?.from?.pathname || "/login";
   
 
   const handleChange = (e) => {
@@ -52,7 +53,9 @@ const SignUp = () => {
       cart:[],
     }
     console.log(state,data)
-    dispatch(signUp(data)).then((res)=>{console.log(res)})
+    dispatch(signUp(data)).then((res)=>{
+      navigate(comingFrom, { replace: true });
+    })
 
   };
 
