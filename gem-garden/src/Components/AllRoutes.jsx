@@ -9,6 +9,8 @@ import { SingleProduct } from '../Pages/SinglePage'
 import { CreditCard } from './CreditCard'
 import { Order } from './Order'
 import PasswordRecovery from '../Pages/PasswordRecovery'
+import { AdminList } from '../Pages/Admin/Admin'
+import { EditProduct } from '../Pages/EditProduct'
 
 
 
@@ -25,6 +27,8 @@ function AllRoutes() {
         <Route path='/orders' element={<Order/>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
         <Route path='/product/:id' element={<SingleProduct/>}/>
+        <Route path='/admin' element={<AdminList/>}/>
+        <Route path='/products/edit/:id' element={<EditProduct/>}/>
       </Routes>
     </div>
   )

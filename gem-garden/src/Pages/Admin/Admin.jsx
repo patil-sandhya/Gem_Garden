@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { ProductCard } from "../Components/ProductCard";
+import { ProductCart_Admin } from "./ProductCart_Admin";
 import styled from "styled-components";
-import { getProduct } from "../Redux/Product/action";
+import { getProduct } from "../../Redux/Product/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { Sidebar } from "../Components/Sidebar";
+import { Sidebar } from "../../Components/Sidebar";
 import { useSearchParams } from "react-router-dom";
-import Loading_Indicator from "../Assets/Loading_Indicator.gif";
-import HeroSection from "../Components/HeroSection";
+import Loading_Indicator from "../../Assets/Loading_Indicator.gif";
+import HeroSection from "../../Components/HeroSection";
+import { deleteProduct } from "../../Redux/Admin/action";
 
-export const ProductList = () => {
+export const AdminList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [limit, setLimit] = useState(20);
@@ -38,6 +39,32 @@ export const ProductList = () => {
     dispatch(getProduct(params));
   }, [searchParams, limit]);
 
+  // const handleDelete = (id)=>{
+  //   let params = {
+  //     params: {
+  //       _limit: limit,
+  //       category: searchParams.getAll("category"),
+  //       brand: searchParams.getAll("brand"),
+  //       _sort: searchParams.get("price") && "price",
+  //       _order: searchParams.get("price"),
+  //     },
+  //   };
+
+  //   dispatch(deleteProduct(id)).then((res)=>{
+  //     // products = products.filter((el, i)=>el.id != res.id)
+  //     // dispatch(getProduct(params)) 
+  //     console.log(res);
+  //   })
+  // }
+
+  // const handleDelete = (id) => {
+  //   dispatch(deleteProduct(id)).then(() => {
+  //     // After deletion, fetch products again to update the UI
+  //     dispatch(getProduct({ params: { _limit: limit, ...getSearchParams() } }));
+  //   });
+  // };
+  
+
   const handleButton = () => {
     setLimit(limit + 20);
   };
@@ -52,12 +79,12 @@ export const ProductList = () => {
 
   return (
     <>
-      <HeroSection />
+      {/* <HeroSection /> */}
       <Sidebar />
       <DIV>
         <div className="grid-card-parent">
           {products.map((el, i) => {
-            return <ProductCard key={el.id} {...el} />;
+            return <ProductCart_Admin key={el.id} {...el}  />;
           })}
         </div>
       </DIV>
@@ -82,6 +109,10 @@ export const ProductList = () => {
     </>
   );
 };
+
+
+
+
 
 const ERROR = styled.div`
   width: 25%;

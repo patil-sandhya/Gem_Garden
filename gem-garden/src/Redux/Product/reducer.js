@@ -1,3 +1,4 @@
+import { ADMIN_DELETE_REQUEST } from "../Admin/actionTypes";
 import {
     GET_PRODUCT_FAILURE,
     GET_PRODUCT_REQUEST,
@@ -26,6 +27,9 @@ import {
   
       case GET_PRODUCT_FAILURE:
         return { ...state, isLoading: false, isError: true };
+
+      // case ADMIN_DELETE_REQUEST:
+      //   return {...state, products.filter((el, id)=>el.id != payload)}
   
       default:
         return state;
