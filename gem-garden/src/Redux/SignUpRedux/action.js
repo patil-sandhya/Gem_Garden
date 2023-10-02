@@ -2,7 +2,7 @@ import axios from "axios";
 import { SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./actionType";
 
 
-const signUp = (payload) => (dispatch)=>{
+export const signUp = (payload) => (dispatch)=>{
 dispatch({ type: SIGNUP_REQUEST });
 
   return axios({
@@ -14,3 +14,4 @@ dispatch({ type: SIGNUP_REQUEST });
     .then((res) => dispatch({ type: SIGNUP_SUCCESS}))
     .catch((err) => dispatch({ type: SIGNUP_FAILURE}));
 }
+
