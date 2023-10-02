@@ -60,6 +60,7 @@ function Navbar() {
   );
 }
 
+
 export default Navbar;
 
 const DIV = styled.div`
