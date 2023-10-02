@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+ import React, { useEffect, useState } from "react";
+ import { useSelector, useDispatch } from "react-redux";
+ import { useParams } from "react-router-dom";
+ import { ProductCard } from "../Components/ProductCard";
+ import { addToBag, addToCart } from "../Redux/action" // Assuming you have these action creators
+
 
 export const SingleProduct = () => {
   const userId = JSON.parse(localStorage.getItem("userId")) || 1;

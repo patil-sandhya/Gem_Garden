@@ -4,14 +4,11 @@ import styled from "styled-components";
 
 export const Sidebar = () => {
 
-    const [searchParams, setSearchParams] = useSearchParams()
-    const [brandDiv, setBrandDiv] = useState(false)
-    const [categoryDiv, setCategoryDiv] = useState(false)
-    const [priceDiv, setPriceDiv] = useState(false)
-
-  const [category, setcategory] = useState(
-    searchParams.getAll("category") || []
-  );
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [brandDiv, setBrandDiv] = useState(false)
+  const [categoryDiv, setCategoryDiv] = useState(false)
+  const [priceDiv, setPriceDiv] = useState(false)
+  const [category, setcategory] = useState(searchParams.getAll("category") || []);
   const [brand, setbrand] = useState(searchParams.getAll("brand") || []);
   const [price, setPrice] = useState(searchParams.get("price") || "");
 
@@ -41,7 +38,6 @@ export const Sidebar = () => {
     const handlePrice = (e)=>{
         const {value} = e.target
         setPrice(value)
-        // console.log(value);
     }
 
   useEffect(() => {
@@ -62,9 +58,9 @@ export const Sidebar = () => {
     <DIV>
         <div className='parent-div' > 
 
-            <p className='filter'>Filter by:</p>
+            <p className='filter'>⇅ Filter by</p>
 
-            <div >
+            <div className='filter-title-div'>
                 <p className='filter-title' onClick={(e)=>(setBrandDiv(!brandDiv))}>Brand</p>
                 {brandDiv && <div className='filter-options'>
                     <input type="checkbox" value='Cartier' onChange={handleBrand} checked={brand.includes('Cartier')} /><label>Cartier</label><br />
@@ -87,7 +83,7 @@ export const Sidebar = () => {
                 </div>}
             </div>
 
-            <div>
+            <div className='filter-title-div'>
                 <p className='filter-title' onClick={(e)=>(setCategoryDiv(!categoryDiv))} >Category</p>
             {categoryDiv && <div className='filter-options' >
                     <input type="checkbox" value='Rings' onChange={handleCategory} checked={category.includes('Rings')} /><label>Rings</label><br />
@@ -99,11 +95,11 @@ export const Sidebar = () => {
                 </div>}
             </div>
 
-            <div>
-                <p className='filter-title' onClick={(e)=>(setPriceDiv(!priceDiv))} >Sort by: </p>
+            <div className='filter-title-div'>
+                <p className='filter-title' onClick={(e)=>(setPriceDiv(!priceDiv))} >⇅ Sort by</p>
             {priceDiv && <div className='filter-options' >
-                    <input type="radio" value='asc' onChange={handlePrice} checked={price === 'asc'} /><label>Ascending</label><br />
-                    <input type="radio" value='desc' onChange={handlePrice} checked={price === 'desc'} /><label>Descending </label><br />
+                    <input type="radio" value='asc' onChange={handlePrice} checked={price === 'asc'} /><label>Low to High</label><br />
+                    <input type="radio" value='desc' onChange={handlePrice} checked={price === 'desc'} /><label>High to Low</label><br />
                     <input type="radio" value='All' onChange={handlePrice} checked={price === 'All'} /><label>All</label><br />
                 </div>}
             </div>
@@ -124,19 +120,21 @@ const DIV = styled.div`
     justify-content: space-around;
     position: relative;
     cursor: pointer;
+    
   }
   
   .filter{
     letter-spacing: 1px;
+    width: 25%;
+    display: flex;
+    justify-content: center
   }
 
     .filter-options{
         position: absolute;
+        top:100%;
         z-index: 1;
         padding: 15px;
-        /* display: flex;
-        flex-direction: columns ; */
-        gap: 10px;
         background-color: white;
         border: 1px solid grey;
         color: black;
@@ -147,9 +145,15 @@ const DIV = styled.div`
     .filter-title{
         padding-inline: 10px;
         transition: .1s;
-        font-family: Oswald;
-        letter-spacing: 2px;
-        /* font-family: "Nunito Sans", sans-serif; */
+        letter-spacing: 1px;
+        font-family: "Nunito Sans", sans-serif;
+      }
+      
+    .filter-title-div{
+      display: flex;
+      justify-content: center;
+      width: 25%;
+      margin: auto;
     }
 
     .filter-title:hover{
@@ -160,7 +164,33 @@ const DIV = styled.div`
     background-color: #292525;
     z-index: 10;
   }
+
+
+  @media screen and (max-width: 900px){
+    .filter{
+      display: none;
+    }
+    .filter-title-div{
+      width: 33.33%;
+      border: 1px solid #aeaeae;
+    }
+
+  }
+
+  @media screen and (max-width: 600px){
+
+    .filter{
+      display: none;
+    }
+
+    .filter-title-div{
+      border: 1px solid #aeaeae;
+    }
+
+    .filter-options{
+      font-size: 10px;
+    }
+
+  }
+
 `
-
-  
-
