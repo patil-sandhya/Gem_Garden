@@ -24,7 +24,7 @@ function AllRoutes() {
         <Route path='/cardPayment' element={<CreditCard/>}/>
         <Route path='/orders' element={<Order/>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
-        <Route path='/product/:id' element={<SingleProduct/>}/>
+        <Route path='/productList/:id' element={<SingleProduct/>}/>
       </Routes>
     </div>
   )
