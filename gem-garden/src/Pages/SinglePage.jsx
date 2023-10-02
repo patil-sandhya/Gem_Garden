@@ -1,71 +1,57 @@
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getProduct } from "../Redux/Product/action";
 import styled from "styled-components";
- import React, { useEffect, useState } from "react";
- import { useSelector, useDispatch } from "react-redux";
- import { useParams } from "react-router-dom";
- import { ProductCard } from "../Components/ProductCard";
- import { addToBag, addToCart } from "../Redux/action" // Assuming you have these action creators
-
 
 export const SingleProduct = () => {
-  const userId = JSON.parse(localStorage.getItem("userId")) || 1;
-
   const { id } = useParams();
-  const [data, setData] = useState({});
-  const products = useSelector((store) => store.productReducer.products);
   const dispatch = useDispatch();
+  const product = useSelector((store) => store.productReducer.products.find((el) => el.id === +id));
 
   useEffect(() => {
-    const product = products.find((el) => el.id === +id);
-    setData(product);
-  }, [id, products]);
-
-  const AddtoCart = () => {
-    axios.patch(`https://gem-gardern-mock-api.onrender.com/users/${userId}`, {
-      cart: [...this.cart, data],
-    });
-  };
+    // Fetch the product by ID
+    dispatch(getProduct(id));
+  }, [id, dispatch]);
 
   return (
     <DIV>
-      {data ? (
-        <div className="parent">
+      {product ? (
+        <div className="product-details">
           <div className="left">
-            <img src={data.avatar} />
+            <img src={product.avatar} alt={product.about} />
           </div>
           <div className="right">
-            <h2>{data.about}</h2>
+            <h2>{product.about}</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              <br /> Aperiam tempore voluptatum perferendis non deleniti
-              repellendus!
+              <br /> Aperiam tempore voluptatum perferendis non deleniti repellendus!
             </p>
             <div className="right-mid">
-              <h4>{data.brand}</h4>
-              <p>{data.category}</p>
-              <p>{data.price}</p>
-            </div>
-            <div className="right-bottom">
-              <button onClick={AddtoCart}>ADD TO BAG</button>
+              <h4>{product.brand}</h4>
+              <p>{product.category}</p>
+              <p>{product.price}</p>
             </div>
           </div>
         </div>
       ) : (
-        <p>Your Cart is Empty</p>
+        <p>Loading...</p>
       )}
     </DIV>
   );
 };
 
 const DIV = styled.div`
-  .parent {
+  .product-details {
     width: 90%;
     margin: 70px auto;
     display: flex;
   }
+
   .left {
     width: 45%;
   }
+
   .left img {
     width: 100%;
   }
