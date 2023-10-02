@@ -92,8 +92,8 @@ const Cart = () => {
     },
   ];
   useEffect(() => {
-    dispatch(getUser(userId));
-    //dispatch(upuser(item))
+    dispatch(getUser(1));
+    // dispatch(upuser(item))
   }, []);
 
   useEffect(() => {
