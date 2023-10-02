@@ -141,4 +141,15 @@ const DIV = styled.div`
     width: 200px;
     margin: auto;
   }
+  @media (max-width:400px) {
+    .login {
+      margin: auto;
+      padding: 10px;
+    }
+    .login > form {
+      width:90%;
+      padding: 100px 10px;
+      
+    }
+  }
 `;
