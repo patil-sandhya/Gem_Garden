@@ -8,6 +8,8 @@ import Cart from './Cart'
 import { SingleProduct } from '../Pages/SinglePage'
 import { CreditCard } from './CreditCard'
 import { Order } from './Order'
+import PasswordRecovery from '../Pages/PasswordRecovery'
+
 
 
 function AllRoutes() {
@@ -21,7 +23,8 @@ function AllRoutes() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/cardPayment' element={<CreditCard/>}/>
         <Route path='/orders' element={<Order/>}/>
-        {/* <Route path='/product/:id' element={<SingleProduct/>}/> */}
+        <Route path='/passwordrecovery' element={<PasswordRecovery />} />
+        <Route path='/product/:id' element={<SingleProduct/>}/>
       </Routes>
     </div>
   )

@@ -29,7 +29,6 @@ const DIV = styled.div`
 
 .hero-img {
   width: 100%;
-  object-fit: cover;
   object-position: center;
   position: relative;
   z-index: -1;
@@ -37,7 +36,7 @@ const DIV = styled.div`
 img {
   object-fit: cover;
   width: 100%;
-  object-position: center;
+  /* object-position: center; */
 }
 .hero-text {
   position: absolute;

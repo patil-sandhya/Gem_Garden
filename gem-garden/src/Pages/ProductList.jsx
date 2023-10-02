@@ -156,6 +156,7 @@ const BUTTON = styled.div`
     border: 1px solid #292525;
   }
 
+
   @media screen and (max-width: 1200px) {
     .Load-Button {
       font-size: 13px;

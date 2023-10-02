@@ -22,7 +22,7 @@ import gift from "../Assets/gift.jpg";
 import about from "../Assets/about.jpg";
 
 function Home() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(3);
 
   const handelCount = (val) => {
     setCount(val);
