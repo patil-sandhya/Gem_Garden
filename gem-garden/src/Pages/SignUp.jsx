@@ -59,6 +59,7 @@ const SignUp = () => {
     <DIV>
       <div className="signup">
         <form className="sign-up-form" onSubmit={handleSignUp}>
+        <h1>SignUp</h1>
           <input
             type="text"
             name="firstName"
@@ -130,14 +131,14 @@ const DIV = styled.div`
     justify-content: center;
     background-color: rgba(41, 37, 37, 0.05);
     margin: auto;
-    padding: 100px;
+    padding: 50px 10px;
   }
   .signup > form {
     display: flex;
     flex-direction: column;
     font-family: "Nunito Sans";
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 100px 75px;
+    padding: 50px 75px;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
@@ -160,6 +161,7 @@ const DIV = styled.div`
     cursor: pointer;
     width: 200px;
     margin: auto;
+    margin-top:30px;
   }
   @media (max-width:400px) {
     .signup {
