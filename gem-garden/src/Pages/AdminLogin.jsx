@@ -45,9 +45,9 @@ const AdminLogin = () => {
     );
     // console.log(userData)
     if (
-      userData.length === 1 &&
-      userData[0].email == state.email &&
-      userData[0].password == state.password
+        newUserData.length === 1 &&
+        newUserData[0].email == state.email &&
+        newUserData[0].password == state.password
     ) {
       localStorage.clear();
       localStorage.setItem("userId", userData[0].id);
@@ -62,6 +62,7 @@ const AdminLogin = () => {
     <DIV>
       <div className="login">
         <form onSubmit={handleAuth}>
+        <h1>Admin Login</h1>
           {isLogin ? <h2>Invalid user/password</h2> : ""}
           <lable for="email">Email</lable>
           <input
@@ -106,14 +107,14 @@ const DIV = styled.div`
     justify-content: center;
     background-color: rgba(41, 37, 37, 0.05);
     margin: auto;
-    padding: 100px;
+    padding: 50px 10px;
   }
   .login > form {
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.9);
     font-family: "Nunito Sans";
-    padding: 100px 75px;
+    padding: 50px 75px;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
@@ -136,6 +137,7 @@ const DIV = styled.div`
     cursor: pointer;
     width: 200px;
     margin: auto;
+    
   }
   @media (max-width:400px) {
     .login {
@@ -144,7 +146,7 @@ const DIV = styled.div`
     }
     .login > form {
       width:90%;
-      padding: 100px 10px;
+      padding: 50px 10px;
       
     }
   }

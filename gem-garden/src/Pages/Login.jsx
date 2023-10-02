@@ -54,7 +54,7 @@ const Login = () => {
       newUserData[0].password == state.password
     ) {
       localStorage.clear();
-      localStorage.setItem("userId", userData[0].id);
+      localStorage.setItem("admin", userData[0].id);
       dispatch(loginSuccess(state));
       navigate(comingFrom, { replace: true });
     } else {
@@ -66,6 +66,7 @@ const Login = () => {
     <DIV>
       <div className="login">
         <form onSubmit={handleAuth}>
+          <h1>Log In</h1>
           {isLogin ? <h2>Invalid user/password</h2> : ""}
           <lable for="email">Email</lable>
           <input
@@ -89,6 +90,9 @@ const Login = () => {
           <button type="submit"> Login</button>
           <p>
             Don't have an account?<Link to="/signup">Sign Up</Link>
+          </p>
+          <p>
+            Are you an Admin!  <Link to="/adminlogin">Login Here</Link>
           </p>
         </form>
       </div>
@@ -117,7 +121,7 @@ const DIV = styled.div`
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.9);
     font-family: "Nunito Sans";
-    padding: 100px 75px;
+    padding: 50px 75px;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
@@ -148,7 +152,7 @@ const DIV = styled.div`
     }
     .login > form {
       width:90%;
-      padding: 100px 10px;
+      padding: 50px 10px;
       
     }
   }
