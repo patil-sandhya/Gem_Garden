@@ -29,7 +29,7 @@ function Navbar() {
               <Link to="/contact">Contact Us</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/acount">Account</Link>
+              <Link to="/login">Account</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
               <Link to="/cart">Bag</Link>
