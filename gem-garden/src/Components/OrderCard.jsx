@@ -3,20 +3,8 @@ import styled from 'styled-components';
 
 
 
-const CartCard = ({ id,about, avatar, price,brand,qty, handleQty, handleDelete }) => {
-  //const [curqty, setQty]= useState(1)
-  const handleDecrease = ()=>{
-    console.log("change")
-    //handleQty(id,val)
-    handleQty(id,-1)
-  }
-  const handleAdd = (val)=>{
-    console.log("ad")
-    handleQty(id,1)
-  }
-  const handleDlt = ()=>{
-    handleDelete(id)
-  }
+const OrderCard = ({ id,about, avatar, price,brand,qty, deliverDate }) => {
+  
   return (
     <CardContainer>
       <ProductInfo>
@@ -28,19 +16,15 @@ const CartCard = ({ id,about, avatar, price,brand,qty, handleQty, handleDelete }
         <h3>{brand}</h3>
           <p>{about}</p>
           <p>₹ {price}</p>
-          <QtyBtn>
-          <QuantityButton onClick={handleDecrease} disabled={qty==1}>−</QuantityButton>
           Qty: {qty}
-          <QuantityButton onClick={handleAdd}>+</QuantityButton>
-          </QtyBtn>
+          <p>Arriving on {deliverDate}</p>
         </ProductDetails>
       </ProductInfo>
-        <DeleteButton onClick={handleDlt}>X</DeleteButton>
     </CardContainer>
   );
 };
 
-export default CartCard;
+export default OrderCard;
 
 const CardContainer = styled.div`
   border: 1px solid #ccc;
@@ -108,15 +92,3 @@ const QtyBtn =  styled.div`
     padding-left: 0px;
     margin-top: 10px;
 `;
-
-// import React from 'react'
-
-// function CartCard() {
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// export default CartCard

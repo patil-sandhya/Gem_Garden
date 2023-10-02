@@ -2,23 +2,56 @@ import React, { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import styled from "styled-components"; // Import styled from Styled Components
 import { store } from "../Redux/Store";
-import { getUser, upuser } from "../Redux/Cart/action";
+import { getUser, updateOrder, upuser } from "../Redux/Cart/action";
 import CartCard from "./CartCard";
 import { updateCart } from "../Redux/Cart/action";
+import Modal from "./Modal";
+import {useNavigate} from "react-router-dom"
+import Alert from "./Alert";
 
 const Cart = () => {
   const userId = localStorage.getItem("userId")
   const [discount, setDiscount]= useState(0)
+  const navigate = useNavigate();
   const [amt, setAmt] = useState(0)
-  const { name, orders, cart, address } = useSelector((store) => {
+  const [payment, setPayment] = useState('')
+  const { name, cart, address } = useSelector((store) => {
     return {
       name: store.CartReducer.name,
-      orders: store.CartReducer.orders,
       cart: store.CartReducer.cart,
       address: store.CartReducer.address,
     };
   }, shallowEqual);
   //console.log(userId)
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+   // console.log(payment)
+    if(payment === "cash"){
+      showSuccessAlert()
+      setTimeout(()=>{
+        navigate("/")
+      },2000)
+      let order = [...cart]
+      //console.log("order", order)
+      let emptyCart =[]
+      dispatch(updateCart(1,emptyCart))
+     dispatch(updateOrder(order))
+    }else{
+      navigate("/cardPayment")
+    }
+  };
+
+  const [showAlert, setShowAlert] = useState(false);
+
+  const showSuccessAlert = () => {
+    setShowAlert({ type: 'success', message: 'Your Order Placed Thank you for shopping with us' });
+  };
   const dispatch = useDispatch();
   const item = [
     {
@@ -59,8 +92,8 @@ const Cart = () => {
     },
   ];
   useEffect(() => {
-    dispatch(getUser(userId));
-    //dispatch(upuser(item))
+    dispatch(getUser(1));
+    // dispatch(upuser(item))
   }, []);
 
   useEffect(() => {
@@ -92,7 +125,7 @@ const Cart = () => {
     dispatch(updateCart(1, res))
   };
   let totalItems = cart.length
-  
+  //console.log(payment)
   return (
     <Container>
       <MainSection>
@@ -116,6 +149,7 @@ const Cart = () => {
               );
             })}
           </div>
+        
         </LeftSection>
         <RightSection>
           {/* Content for the right section */}
@@ -137,7 +171,7 @@ const Cart = () => {
           </div>
           <div className="details">
           <div>Tax Rate</div>
-          <div>1%</div>
+          <div>{(amt > 0)?1:0}%</div>
           </div>
           <div className="details">
           <div>Tax</div>
@@ -149,18 +183,28 @@ const Cart = () => {
           </div>
           <div className="details">
           <div>Convinience Fee</div>
-          <div>₹99</div>
+          <div>₹ {(amt > 0) ? 99 : 0}</div>
           </div>
           <hr />
           <div className="details">
           <div>Total Amount</div>
-          <div>₹{(amt+(amt*1/100)+99 - (amt*(discount)/100)).toFixed(2)}</div>
+          <div>₹{(amt > 0)?(amt+(amt*1/100)+99 - (amt*(discount)/100)).toFixed(2):0} </div>
           </div>
           <div className="orderBtn">
-          <OrderBtn>PLACE ORDER</OrderBtn>
+          <OrderBtn onClick={openModal} disabled={(amt <= 0)}>PLACE ORDER</OrderBtn>
           </div>
         </RightSection>
       </MainSection>
+      <Modal isOpen={modalOpen} onClose={closeModal}>
+        <h2>Total Amount ₹{(amt+(amt*1/100)+99 - (amt*(discount)/100)).toFixed(2)}</h2>
+        <p>Recomended Payment Options</p>
+        <p onChange={(e)=> setPayment(e.target.value)}>
+        <input type="radio" name="payment" value="card" /> Card Payment 
+        <br />
+        <input type="radio" name="payment" value="cash" /> Cash on Delivery
+        </p>
+      </Modal>
+      {showAlert && <Alert type={showAlert.type} message={showAlert.message} />}
     </Container>
   );
 };

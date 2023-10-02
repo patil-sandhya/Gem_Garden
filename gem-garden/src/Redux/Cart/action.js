@@ -38,3 +38,16 @@ export const upuser = (cart)=> (dispatch)=>{
     }).then((res)=> console.log(res))
     return data
 }
+
+export const updateOrder = (order)=> (dispatch)=>{
+  dispatch({ type: GET_REQUEST });
+  let data = axios.patch(`https://gem-gardern-mock-api.onrender.com/users/1`,{
+    orders:order
+}).then((res)=> {console.log(res)
+  dispatch({ type: PATCH_CART_REQUEST_SUCCESS, payload: res.data.orders });
+})
+.catch((err) => dispatch({ type: GET_REQUEST_FAILURE }));
+
+return data
+}
+

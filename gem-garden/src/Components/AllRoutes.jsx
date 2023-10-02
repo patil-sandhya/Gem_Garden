@@ -6,9 +6,10 @@ import Login from '../Pages/Login'
 import SignUp from '../Pages/SignUp'
 import Cart from './Cart'
 import { SingleProduct } from '../Pages/SinglePage'
+import { CreditCard } from './CreditCard'
+import { Order } from './Order'
 import PasswordRecovery from '../Pages/PasswordRecovery'
 import AdminLogin from "../Pages/AdminLogin"
-
 
 
 
@@ -21,9 +22,11 @@ function AllRoutes() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/cardPayment' element={<CreditCard/>}/>
+        <Route path='/orders' element={<Order/>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
         <Route path='/adminlogin' element={<AdminLogin />} />
-        <Route path='/product/:id' element={<SingleProduct/>}/>
+        <Route path='/productList/:id' element={<SingleProduct/>}/>
       </Routes>
     </div>
   )
