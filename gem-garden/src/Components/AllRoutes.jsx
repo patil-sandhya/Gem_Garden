@@ -10,6 +10,8 @@ import { CreditCard } from './CreditCard'
 import { Order } from './Order'
 import PasswordRecovery from '../Pages/PasswordRecovery'
 
+import { AdminPage } from '../Pages/AdminPage'
+
 
 
 function AllRoutes() {
@@ -25,6 +27,7 @@ function AllRoutes() {
         <Route path='/orders' element={<Order/>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
         <Route path='/productList/:id' element={<SingleProduct/>}/>
+        <Route path="/add-product" element={<AdminPage/>}/>
       </Routes>
     </div>
   )
