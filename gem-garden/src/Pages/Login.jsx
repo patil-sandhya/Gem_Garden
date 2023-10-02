@@ -49,9 +49,9 @@ const Login = () => {
 
     // console.log(newUserData);
     if (
-      userData.length === 1 &&
-      userData[0].email == state.email &&
-      userData[0].password == state.password
+      newUserData.length === 1 &&
+      newUserData[0].email == state.email &&
+      newUserData[0].password == state.password
     ) {
       localStorage.clear();
       localStorage.setItem("userId", userData[0].id);
