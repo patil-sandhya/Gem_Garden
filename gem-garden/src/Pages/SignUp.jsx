@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
-import { signup } from "../Redux/SignUpRedux/action";
+import { signUp } from "../Redux/SignUpRedux/action";
 
 
 const signUpUser = {
@@ -41,6 +41,7 @@ const SignUp = () => {
   };
   const handleSignUp = (e) => {
     e.preventDefault();
+    dispatch(signUp(state))
 
   };
 
