@@ -62,6 +62,7 @@ function Navbar() {
           </Link>
         </div>
       </div>
+      
     </DIV>
   );
 }
