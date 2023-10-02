@@ -13,15 +13,15 @@ let loginUser = {
   password: "",
 };
 
-const Login = () => {
+const AdminLogin = () => {
   const [state, setState] = useState(loginUser);
   const isAuth = useSelector((store) => store.AuthReducer.isAuth);
-  const userData = useSelector((store) => store.AuthReducer.userData);
+  let userData = useSelector((store) => store.AuthReducer.userData);
   const isLogin = useSelector((store) => store.AuthReducer.isLogin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const comingFrom = location.state?.from?.pathname || "/";
+  const comingFrom = location.state?.from?.pathname || "/admin";
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -40,14 +40,10 @@ const Login = () => {
 
   const handleAuth = (e) => {
     e.preventDefault();
-    console.log(state);
-    console.log(userData);
-
     let newUserData = userData.filter(
       (ele) => ele.email === state.email && ele.password === state.password
     );
-
-    // console.log(newUserData);
+    // console.log(userData)
     if (
       userData.length === 1 &&
       userData[0].email == state.email &&
@@ -55,8 +51,8 @@ const Login = () => {
     ) {
       localStorage.clear();
       localStorage.setItem("userId", userData[0].id);
-      dispatch(loginSuccess(state));
       navigate(comingFrom, { replace: true });
+      dispatch(loginSuccess(state));
     } else {
       dispatch(loginFailure());
     }
@@ -96,7 +92,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;
 // font-family: 'Nunito Sans', sans-serif;
 // font-family: 'Oswald', sans-serif;
 

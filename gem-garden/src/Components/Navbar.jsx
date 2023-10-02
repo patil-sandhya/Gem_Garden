@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   const [menu, setmenu] = useState(false);
@@ -13,49 +12,57 @@ function Navbar() {
     setmenu((prev) => !prev);
   };
 
-  console.log(menu)
+  console.log(menu);
   return (
     <DIV>
       <div className="ham">
-      <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
+        <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-      
+
         <nav>
           <ul className={`nav-menu ${menu ? "active" : ""}`}>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/orders">Orders</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
               <Link to="/login">Account</Link>
             </li>
-            <li className="nav-links" onClick={handelMenu}>
+            <li className="nav-links bag-number" onClick={handelMenu}>
               <Link to="/cart">Bag</Link>
             </li>
           </ul>
         </nav>
         <div className="logo">
-          <h1><Link to={"/"}>GEM GARDEN</Link></h1>
+          <h1>
+            <Link to={"/"}>GEM GARDEN</Link>
+          </h1>
         </div>
         <nav>
           <ul className={`nav-menu ${menu ? "active" : ""}`}>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/jewlry">Jewelry</Link>
+              <Link to="/ProductList?category=Rings&category=Brecelets&category=Earrning">
+                Jewelry
+              </Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/watches">Watches</Link>
+              <Link to="/ProductList?brand=Rolex&brand=OMEGA">Watches</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/gifts">Gifts</Link>
+            
+            <Link  className="link"to={"/add-product"}>Admin Page</Link>
             </li>
           </ul>
         </nav>
         <div className="bag">
-        <FontAwesomeIcon icon={faShoppingBag}/>
+          <Link to="/cart">
+            <FontAwesomeIcon icon={faShoppingBag} />
+          </Link>
         </div>
       </div>
+      
     </DIV>
   );
 }
@@ -80,7 +87,7 @@ const DIV = styled.div`
   }
   .nav-menu {
     display: flex;
-    gap: 60px; 
+    gap: 60px;
   }
   .nav-links {
     list-style: none;
@@ -89,7 +96,7 @@ const DIV = styled.div`
     text-decoration: none;
     color: #fff;
   }
-  a{
+  a {
     text-decoration: none;
     color: #fff;
   }
@@ -107,11 +114,12 @@ const DIV = styled.div`
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  .bag{
+  .bag {
     display: none;
     margin: 0 20px;
     cursor: pointer;
   }
+
   @media (max-width: 780px) {
     .menu {
       display: block;
@@ -135,6 +143,7 @@ const DIV = styled.div`
       width: 100%;
       text-align: center;
       transition: 0.3s;
+      z-index: 99;
     }
     .nav-links:last-child {
       padding-bottom: 40px;
@@ -142,7 +151,7 @@ const DIV = styled.div`
     .nav-menu.active {
       left: 0;
     }
-    .bag{
+    .bag {
       display: block;
     }
   }

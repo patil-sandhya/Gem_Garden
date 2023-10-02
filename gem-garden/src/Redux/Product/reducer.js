@@ -1,9 +1,5 @@
 import { ADMIN_DELETE_REQUEST } from "../Admin/actionTypes";
-import {
-    GET_PRODUCT_FAILURE,
-    GET_PRODUCT_REQUEST,
-    GET_PRODUCT_SUCCESS,
-  } from "./actionTypes";
+import { GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS, POST_PRODUCT_SUCCESS } from "./actionTypes";
   
   const initialState = {
     products: [],
@@ -30,6 +26,9 @@ import {
 
       // case ADMIN_DELETE_REQUEST:
       //   return {...state, products.filter((el, id)=>el.id != payload)}
+        
+      case POST_PRODUCT_SUCCESS:
+        return { ...state, isLoading: false, products: [...state.products, payload] };
   
       default:
         return state;
