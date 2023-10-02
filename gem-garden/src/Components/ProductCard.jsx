@@ -1,64 +1,72 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom'
+
 
 export const ProductCard = ({ id, price, about, avatar, brand }) => {
   return (
-    <CardLink to={`/product/${id}`}>
-      <Card>
-        <div className="card-image-div">
-          <img className="card-image" src={avatar} alt="jewelry" />
+    <DIV about={about}>
+        <div className="card-div">
+          <div className="card-image-div">
+          <Link to={`/ProductList/${id}`}>
+            <img className="card-image" src={avatar} alt="jwellery" />
+          </Link>
+          </div>
+
+          <p className="card-about" id="card-about">
+            {about}
+            {/* .length <= 30 ? about : about.substring(0, 30 - 3) + "..." */}
+          </p>
+
+          <p className="card-brand">{brand}</p>
+          <div className="card-button-div">
+            <button className="card-btn" id="cart-btn">
+              Add to Cart
+            </button>
+            <button className="card-btn" id="buy-btn">
+              Buy Now
+            </button>
+          </div>
+          <p className="card-price">₹ {price}</p>
         </div>
-        <p className="card-about" id="card-about">
-          {about}
-        </p>
-        <p className="card-brand">{brand}</p>
-        <div className="card-button-div">
-          <button className="card-btn" id="cart-btn">
-            Add to Cart
-          </button>
-          <button className="card-btn" id="buy-btn">
-            Buy Now
-          </button>
-        </div>
-        <p className="card-price">₹ {price}</p>
-      </Card>
-    </CardLink>
+    </DIV>
   );
 };
 
-const CardLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-`;
+const DIV = styled.div`
 
-const Card = styled.div`
-  transition: 0.1s;
-  padding: 20px;
-  border: 1px solid #c7c7c7;
-  border-radius: 20%;
-  position: relative;
+  .card-div {
+    transition: 0.1s;
+    padding: 20px;
+    border: 1px solid #c7c7c7;
+    border-radius: 20%;
+    position: relative;
+    text-decoration: none;
+  }
 
-  &:hover {
+  .card-div:hover {
     border: 2px solid #292525;
   }
 
-  &:hover .card-button-div {
+  .card-div:hover .card-button-div {
     display: flex;
     transform: translateY(0%);
   }
 
-  &:hover .card-about,
-  &:hover .card-brand {
+  .card-div:hover .card-about,
+  .card-div:hover .card-brand {
     display: none;
   }
 
   .card-image-div {
     width: 80%;
     margin: auto;
+    /* height: 43vh; */
   }
 
   .card-image {
+    /* height: 30vh; */
+    /* border: 1px solid red; */
     width: 100%;
     margin: auto;
     transition: 0.3s;
@@ -82,6 +90,9 @@ const Card = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: var(--max-lines);
+    /* white-space: nowrap; */
+    /* overflow: auto;
+    text-overflow: ellipsis; */
   }
 
   .card-brand,
@@ -131,8 +142,10 @@ const Card = styled.div`
   }
 
   @media screen and (max-width: 900px) {
-    padding-bottom: 25px;
-    padding-left: 25px;
+    .card-div {
+      padding-bottom: 25px;
+      padding-left: 25px;
+    }
     .card-about,
     .card-brand,
     .card-price {
@@ -141,8 +154,11 @@ const Card = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    padding-bottom: 30px;
-    padding-left: 30px;
+    .card-div {
+      padding-bottom: 30px;
+      padding-left: 30px;
+    }
+
     .card-image-div {
       width: 80%;
     }
