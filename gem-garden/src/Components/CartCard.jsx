@@ -1,38 +1,41 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-// Styled components
 
 
-const CartCard = ({ about, avatar, price,brand, onDelete }) => {
-  const [curqty, setQty]= useState(1)
-  const handleQty = (val)=>{
-    setQty((prev)=> prev + val)
-    console.log(curqty)
+const CartCard = ({ id,about, avatar, price,brand,qty, handleQty, handleDelete }) => {
+  //const [curqty, setQty]= useState(1)
+  const handleDecrease = ()=>{
+    console.log("change")
+    //handleQty(id,val)
+    handleQty(id,-1)
   }
-
-  const handleDelete = ()=>{
-
+  const handleAdd = (val)=>{
+    console.log("ad")
+    handleQty(id,1)
+  }
+  const handleDlt = ()=>{
+    handleDelete(id)
   }
   return (
     <CardContainer>
       <ProductInfo>
       <div>
         <ProductImage src={avatar} alt={about} />
-        <QtyBtn>
-          <QuantityButton onClick={()=> handleQty(-1)} disabled={curqty==1}>−</QuantityButton>
-          {curqty}
-          <QuantityButton onClick={()=> handleQty(+1)}>+</QuantityButton>
-          </QtyBtn>
+        
         </div>
         <ProductDetails>
         <h3>{brand}</h3>
           <p>{about}</p>
           <p>₹ {price}</p>
-          
+          <QtyBtn>
+          <QuantityButton onClick={handleDecrease} disabled={qty==1}>−</QuantityButton>
+          Qty: {qty}
+          <QuantityButton onClick={handleAdd}>+</QuantityButton>
+          </QtyBtn>
         </ProductDetails>
       </ProductInfo>
-        <DeleteButton>X</DeleteButton>
+        <DeleteButton onClick={handleDlt}>X</DeleteButton>
     </CardContainer>
   );
 };
@@ -55,7 +58,6 @@ const CardContainer = styled.div`
 
 const ProductInfo = styled.div`
   display: flex;
-  
 `;
 
 const ProductImage = styled.img`
@@ -102,5 +104,7 @@ const DeleteButton = styled.button`
 const QtyBtn =  styled.div`
     display:flex;
     justify-content:center;
-    margin: 5px
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-top: 10px;
 `;
