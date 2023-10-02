@@ -3,6 +3,20 @@ import styled from "styled-components";
 import { postProduct } from "../Redux/Product/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 //import { store } from "../redux/store";
+
+
+
+//const initalState = {
+ 
+   // name: "",
+   // price: "",
+   // about: "",
+   // category: "",
+   // brand: "",
+   // rating: "",
+   // image: "",
+ 
+//};
 const initalState = {
  
     name: "",
