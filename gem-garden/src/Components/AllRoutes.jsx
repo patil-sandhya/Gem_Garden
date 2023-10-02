@@ -9,6 +9,7 @@ import { SingleProduct } from '../Pages/SinglePage'
 import { CreditCard } from './CreditCard'
 import { Order } from './Order'
 import PasswordRecovery from '../Pages/PasswordRecovery'
+import AdminLogin from "../Pages/AdminLogin"
 
 
 
@@ -24,6 +25,7 @@ function AllRoutes() {
         <Route path='/cardPayment' element={<CreditCard/>}/>
         <Route path='/orders' element={<Order/>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
+        <Route path='/adminlogin' element={<AdminLogin />} />
         <Route path='/productList/:id' element={<SingleProduct/>}/>
       </Routes>
     </div>
