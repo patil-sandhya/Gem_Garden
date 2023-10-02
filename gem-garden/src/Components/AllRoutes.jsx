@@ -21,7 +21,8 @@ function AllRoutes() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
-        {/* <Route path='/product/:id' element={<SingleProduct/>}/> */}
+ 
+        <Route path='/product/:id' element={<SingleProduct/>}/>
       </Routes>
     </div>
   )

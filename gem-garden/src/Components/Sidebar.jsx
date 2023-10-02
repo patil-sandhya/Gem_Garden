@@ -112,6 +112,7 @@ export const Sidebar = () => {
 
 const DIV = styled.div`
   .parent-div {
+    padding: 10px;
     transform: 1s;
     color: white;
     background-color: #292525;
