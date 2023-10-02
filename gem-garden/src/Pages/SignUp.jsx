@@ -9,8 +9,8 @@ const signUpUser = {
   firstName: "",
   lastName:"",
   email:"",
+  address:"",
   password:"",
-  dateOfBirth:"",
   mobileNumber:"",
 };
 
@@ -24,10 +24,11 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const name = e.target.name;
-    const value = e.target.vaalue;
-    setState((prev) =>{
+    const value = e.target.value;
+    console.log(e.target.value)
+    setState(() =>{
         return {
-            ...prev,
+            ...state,
             [name]:value,
         }
     })
@@ -41,7 +42,17 @@ const SignUp = () => {
   };
   const handleSignUp = (e) => {
     e.preventDefault();
-    dispatch(signUp(state))
+    const data = {
+      name: state.firstName+" "+state.lastName,
+      email:state.email,
+      password:state.password,
+      address:state.address,
+      mobile:state.mobileNumber,
+      orders:[],
+      cart:[],
+    }
+    console.log(state,data)
+    dispatch(signUp(data)).then((res)=>{console.log(res)})
 
   };
 
@@ -67,6 +78,13 @@ const SignUp = () => {
           type="email"
           name="email"
           placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="test"
+          name="address"
+          placeholder="Address"
           onChange={handleChange}
           required
         />
