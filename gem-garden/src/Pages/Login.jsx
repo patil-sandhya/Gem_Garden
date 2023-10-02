@@ -47,7 +47,7 @@ const Login = () => {
       (ele) => ele.email === state.email && ele.password === state.password
     );
 
-    console.log(newUserData);
+    // console.log(newUserData);
     if (
       userData.length === 1 &&
       userData[0].email == state.email &&
