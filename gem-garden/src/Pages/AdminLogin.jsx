@@ -83,7 +83,7 @@ const AdminLogin = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;
 // font-family: 'Nunito Sans', sans-serif;
 // font-family: 'Oswald', sans-serif;
 
