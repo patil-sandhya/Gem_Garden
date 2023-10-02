@@ -1,4 +1,4 @@
-import { GET_REQUEST, GET_REQUEST_FAILURE, GET_REQUEST_SUCCESS } from "./actionType"
+import { GET_REQUEST, GET_REQUEST_FAILURE, GET_REQUEST_SUCCESS, PATCH_CART_REQUEST_SUCCESS } from "./actionType"
 
 const initState = {
     id: 0,
@@ -32,6 +32,12 @@ export const reducer = (state= initState, {type,payload})=>{
                 ...state,
                 isLoading:false,
                 isErr: true
+            }
+        case PATCH_CART_REQUEST_SUCCESS:
+            return{
+                ...state,
+                isLoading:false,
+                cart: payload,
             }
         default: return state
     }
