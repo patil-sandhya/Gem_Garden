@@ -51,7 +51,8 @@ function Navbar() {
               <Link to="/ProductList?brand=Rolex&brand=OMEGA">Watches</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/gifts">Gifts</Link>
+            
+            <Link  className="link"to={"/add-product"}>Admin Page</Link>
             </li>
           </ul>
         </nav>
@@ -61,10 +62,10 @@ function Navbar() {
           </Link>
         </div>
       </div>
+      
     </DIV>
   );
 }
-
 
 export default Navbar;
 
