@@ -108,3 +108,15 @@ const QtyBtn =  styled.div`
     padding-left: 0px;
     margin-top: 10px;
 `;
+
+// import React from 'react'
+
+// function CartCard() {
+//   return (
+//     <div>
+      
+//     </div>
+//   )
+// }
+
+// export default CartCard
