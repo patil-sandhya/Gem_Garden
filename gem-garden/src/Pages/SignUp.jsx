@@ -161,4 +161,15 @@ const DIV = styled.div`
     width: 200px;
     margin: auto;
   }
+  @media (max-width:400px) {
+    .signup {
+      margin: auto;
+      padding: 10px;
+    }
+    .signup > form {
+      width:90%;
+      padding: 100px 10px;
+      
+    }
+  }
 `;
