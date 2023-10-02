@@ -7,7 +7,7 @@ dispatch({ type: SIGNUP_REQUEST });
 
   return axios({
     method: "POST",
-    url: "/user",
+    url: "/users",
     baseURL: "https://gem-gardern-mock-api.onrender.com",
     data: payload,
   })
