@@ -51,10 +51,6 @@ function Navbar() {
               <Link to="/ProductList?brand=Rolex&brand=OMEGA">Watches</Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-            
-
-            <Link  className="link"to={"/add-product"}>Admin Page</Link>
-
             <Link className="link"to={"/"}>Gifts</Link>
 
             </li>
