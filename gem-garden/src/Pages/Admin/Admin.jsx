@@ -39,31 +39,6 @@ export const AdminList = () => {
     dispatch(getProduct(params));
   }, [searchParams, limit]);
 
-  // const handleDelete = (id)=>{
-  //   let params = {
-  //     params: {
-  //       _limit: limit,
-  //       category: searchParams.getAll("category"),
-  //       brand: searchParams.getAll("brand"),
-  //       _sort: searchParams.get("price") && "price",
-  //       _order: searchParams.get("price"),
-  //     },
-  //   };
-
-  //   dispatch(deleteProduct(id)).then((res)=>{
-  //     // products = products.filter((el, i)=>el.id != res.id)
-  //     // dispatch(getProduct(params)) 
-  //     console.log(res);
-  //   })
-  // }
-
-  // const handleDelete = (id) => {
-  //   dispatch(deleteProduct(id)).then(() => {
-  //     // After deletion, fetch products again to update the UI
-  //     dispatch(getProduct({ params: { _limit: limit, ...getSearchParams() } }));
-  //   });
-  // };
-  
 
   const handleButton = () => {
     setLimit(limit + 20);

@@ -1,5 +1,7 @@
 import { GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./actionTypes"
 import axios from 'axios'
+
+
 export const getProduct = (params) => (dispatch)=>{
     dispatch({type: GET_PRODUCT_REQUEST})
     axios.get(`https://gem-gardern-mock-api.onrender.com/products`,params)
@@ -11,3 +13,4 @@ export const getProduct = (params) => (dispatch)=>{
         dispatch({type: GET_PRODUCT_FAILURE})
     })
 }
+
