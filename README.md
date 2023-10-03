@@ -12,7 +12,7 @@ Our Home Page is the gateway to a world of exquisite designer jewelry. Discover 
 
 
 ## Screenshots
-![Home Page](Screens/Home-1.png)
+![Home Page](https://drive.google.com/file/d/1BiWK_s1RWMDUceKs743_jaP-sljUix-6/view?usp=sharing)
 
 ## ScreenShots
 ![Home Page](Screens/Home-2.jpg)
@@ -41,6 +41,7 @@ The Single Product Page on GEM GARDEN is where the beauty and details of each je
 
 ## ScreenShots
 ![Single Products Page](screens/SingleProduct-2.jpg)
+
 ## Account Page
 
 Your personal space on GEM GARDEN, the Account Page, allows you to manage your profile. Here, you can conveniently log in if you're an existing member or sign up if you're new to our website. Enjoy a personalized shopping experience, track your orders, and save your favorite items for future reference.
