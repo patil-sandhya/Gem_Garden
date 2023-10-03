@@ -13,15 +13,15 @@ let loginUser = {
   password: "",
 };
 
-const Login = () => {
+const AdminLogin = () => {
   const [state, setState] = useState(loginUser);
   const isAuth = useSelector((store) => store.AuthReducer.isAuth);
-  const userData = useSelector((store) => store.AuthReducer.userData);
+  let userData = useSelector((store) => store.AuthReducer.userData);
   const isLogin = useSelector((store) => store.AuthReducer.isLogin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const comingFrom = location.state?.from?.pathname || "/";
+  const comingFrom = location.state?.from?.pathname || "/admin";
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -40,23 +40,19 @@ const Login = () => {
 
   const handleAuth = (e) => {
     e.preventDefault();
-    console.log(state);
-    console.log(userData);
-
     let newUserData = userData.filter(
       (ele) => ele.email === state.email && ele.password === state.password
     );
-
-    // console.log(newUserData);
+    // console.log(userData)
     if (
-      newUserData.length === 1 &&
-      newUserData[0].email == state.email &&
-      newUserData[0].password == state.password
+        newUserData.length === 1 &&
+        newUserData[0].email == state.email &&
+        newUserData[0].password == state.password
     ) {
       localStorage.clear();
-      localStorage.setItem("userId", newUserData[0].id);
-      dispatch(loginSuccess());
+      localStorage.setItem("adminId", 'admin');
       navigate(comingFrom, { replace: true });
+      dispatch(loginSuccess(state));
     } else {
       dispatch(loginFailure());
     }
@@ -66,7 +62,7 @@ const Login = () => {
     <DIV>
       <div className="login">
         <form onSubmit={handleAuth}>
-          <h1>Log In</h1>
+        <h1>Admin Login</h1>
           {isLogin ? <h2>Invalid user/password</h2> : ""}
           <lable for="email">Email</lable>
           <input
@@ -91,16 +87,13 @@ const Login = () => {
           <p>
             Don't have an account?<Link to="/signup">Sign Up</Link>
           </p>
-          <p>
-            Are you an Admin!  <Link to="/adminlogin">Login Here</Link>
-          </p>
         </form>
       </div>
     </DIV>
   );
 };
 
-export default Login;
+export default AdminLogin;
 // font-family: 'Nunito Sans', sans-serif;
 // font-family: 'Oswald', sans-serif;
 
@@ -114,7 +107,7 @@ const DIV = styled.div`
     justify-content: center;
     background-color: rgba(41, 37, 37, 0.05);
     margin: auto;
-    padding: 100px;
+    padding: 50px 10px;
   }
   .login > form {
     display: flex;
@@ -144,6 +137,7 @@ const DIV = styled.div`
     cursor: pointer;
     width: 200px;
     margin: auto;
+    
   }
   @media (max-width:400px) {
     .login {

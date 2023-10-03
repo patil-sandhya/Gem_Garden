@@ -5,6 +5,8 @@ import OrderCard from "./OrderCard";
 import { getUser } from "../Redux/Cart/action";
 
 export const Order = () => {
+  const userId = localStorage.getItem("userId")
+
   const dispatch = useDispatch();
   const { name, orders, address } = useSelector((store) => {
     return {
@@ -15,7 +17,7 @@ export const Order = () => {
   }, shallowEqual);
 
   useEffect(() => {
-    dispatch(getUser(1));
+    dispatch(getUser(userId));
   }, []);
   console.log(name, orders, address, "**");
   let formattedDate;

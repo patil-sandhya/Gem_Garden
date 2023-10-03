@@ -111,8 +111,11 @@ export const Sidebar = () => {
 
 
 const DIV = styled.div`
+
+padding: -10;
   .parent-div {
-    padding: 10px;
+    /* padding: 10px; */
+    /* border: 5px solid grey; */
     transform: 1s;
     color: white;
     background-color: #292525;
@@ -120,7 +123,6 @@ const DIV = styled.div`
     justify-content: space-around;
     position: relative;
     cursor: pointer;
-    
   }
   
   .filter{
@@ -143,6 +145,7 @@ const DIV = styled.div`
     }
 
     .filter-title{
+      /* border: 1px solid yellow; */
         padding-inline: 10px;
         transition: .1s;
         letter-spacing: 1px;
@@ -150,6 +153,7 @@ const DIV = styled.div`
       }
       
     .filter-title-div{
+      /* border: 3px solid red; */
       display: flex;
       justify-content: center;
       width: 25%;
@@ -160,9 +164,9 @@ const DIV = styled.div`
         scale: 1.2;
     }
     .child-brand {
-    position: absolute;
-    background-color: #292525;
-    z-index: 10;
+      position: absolute;
+      background-color: #292525;
+      z-index: 10;
   }
 
 
@@ -173,6 +177,9 @@ const DIV = styled.div`
     .filter-title-div{
       width: 33.33%;
       border: 1px solid #aeaeae;
+    }
+    .filter-title{
+      font-size: smaller;
     }
 
   }
@@ -186,9 +193,12 @@ const DIV = styled.div`
     .filter-title-div{
       border: 1px solid #aeaeae;
     }
-
+    
     .filter-options{
       font-size: 10px;
+    }
+    .filter-title{
+      font-size: smaller;
     }
 
   }

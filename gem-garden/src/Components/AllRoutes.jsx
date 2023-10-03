@@ -9,8 +9,11 @@ import { SingleProduct } from '../Pages/SinglePage'
 import { CreditCard } from './CreditCard'
 import { Order } from './Order'
 import PasswordRecovery from '../Pages/PasswordRecovery'
-
-import { AdminPage } from '../Pages/AdminPage'
+import { AdminList } from '../Pages/Admin/Admin'
+import { EditProduct } from '../Pages/EditProduct'
+import AdminLogin from "../Pages/AdminLogin"
+import { AddProduct } from '../Pages/Admin/AddProduct'
+import { PrivateRoute } from './PrivateRoute'
 
 
 
@@ -22,12 +25,15 @@ function AllRoutes() {
         <Route path='/ProductList' element={<ProductList/>}/>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/cardPayment' element={<CreditCard/>}/>
-        <Route path='/orders' element={<Order/>}/>
+        <Route path='/cart' element={<PrivateRoute><Cart/></PrivateRoute>}/>
+        <Route path='/cardPayment' element={<PrivateRoute><CreditCard/></PrivateRoute>}/>
+        <Route path='/orders' element={<PrivateRoute><Order/></PrivateRoute>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
+        <Route path='/admin' element={<AdminList/>}/>
+        <Route path='/products/edit/:id' element={<EditProduct/>}/>
         <Route path='/productList/:id' element={<SingleProduct/>}/>
-        <Route path="/add-product" element={<AdminPage/>}/>
+        <Route path="/addProduct" element={<AddProduct/>}/>
+        <Route path='/adminlogin' element={<AdminLogin />} />
       </Routes>
     </div>
   )

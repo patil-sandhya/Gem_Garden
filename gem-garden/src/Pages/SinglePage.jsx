@@ -1,9 +1,10 @@
 import axios from "axios";
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { ProductCard } from "../Components/ProductCard";
+ import React, { useEffect, useState } from "react";
+ import { useSelector, useDispatch } from "react-redux";
+ import { useParams } from "react-router-dom";
+ import { ProductCard } from "../Components/ProductCard";
+import { Link } from "react-router-dom";
 import { updateCart } from "../Redux/Cart/action";
 import BestSellerCard from "../Components/BestSellerCard";
 import best_seller_1 from "../Assets/bestSeller-1.jpg";
@@ -11,8 +12,9 @@ import best_seller_2 from "../Assets/bestSeller-2.jpg";
 import best_seller_3 from "../Assets/bestSeller-3.jpg";
 import best_seller_4 from "../Assets/bestSeller-4.jpg";
 
+
 export const SingleProduct = () => {
-  const userId = JSON.parse(localStorage.getItem("userId")) || 1;
+  const userId = JSON.parse(localStorage.getItem("userId"));
 
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -150,7 +152,7 @@ export const SingleProduct = () => {
               <div className="right-mid">
                 <h3>{data.brand}</h3>
                 <p>{data.category}</p>
-                <p> $ {data.price}</p>
+                <p> ₹ {data.price}</p>
               </div>
               <div className="right-bottom">
                 <button onClick={AddtoCart}>ADD TO BAG</button>

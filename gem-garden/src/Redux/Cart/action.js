@@ -39,9 +39,9 @@ export const upuser = (cart)=> (dispatch)=>{
     return data
 }
 
-export const updateOrder = (order)=> (dispatch)=>{
+export const updateOrder = (id,order)=> (dispatch)=>{
   dispatch({ type: GET_REQUEST });
-  let data = axios.patch(`https://gem-gardern-mock-api.onrender.com/users/1`,{
+  let data = axios.patch(`https://gem-gardern-mock-api.onrender.com/users/${id}`,{
     orders:order
 }).then((res)=> {console.log(res)
   dispatch({ type: PATCH_CART_REQUEST_SUCCESS, payload: res.data.orders });
@@ -50,4 +50,3 @@ export const updateOrder = (order)=> (dispatch)=>{
 
 return data
 }
-

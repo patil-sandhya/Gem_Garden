@@ -1,77 +1,60 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 
-function Navbar() {
+function AdminNavbar() {
   const [menu, setmenu] = useState(false);
 
   const handelMenu = () => {
     setmenu((prev) => !prev);
   };
 
-  console.log(menu);
+  const handelLogout = () => {
+    localStorage.removeItem("adminId");
+  };
+
   return (
     <DIV>
-      <div className="ham">
-        <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
-
-        <nav>
-          <ul className={`nav-menu ${menu ? "active" : ""}`}>
-            <li className="nav-links" onClick={handelMenu}>
-              <Link to="/orders">Orders</Link>
-            </li>
-            <li className="nav-links" onClick={handelMenu}>
-              <Link to="/login">Account</Link>
-            </li>
-            <li className="nav-links bag-number" onClick={handelMenu}>
-              <Link to="/cart">Bag</Link>
-            </li>
-          </ul>
-        </nav>
-        <div className="logo">
+      <div class="ham">
+        <div class="logo">
           <h1>
-            <Link to={"/"}>GEM GARDEN</Link>
+            <Link to={"/admin"}>GEM GARDEN</Link>
           </h1>
         </div>
         <nav>
           <ul className={`nav-menu ${menu ? "active" : ""}`}>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/ProductList?category=Rings&category=Brecelets&category=Earrning">
-                Jewelry
+              <Link to="/admin">ProductList</Link>
+            </li>
+            <li className="nav-links" onClick={handelMenu}>
+              <li className="nav-links" onClick={handelMenu}>
+                <Link to="/">Users</Link>
+              </li>
+            </li>
+            <li className="nav-links" onClick={handelMenu}>
+              <Link className="link" to={"/addProduct"}>
+                Creat Product
               </Link>
             </li>
             <li className="nav-links" onClick={handelMenu}>
-              <Link to="/ProductList?brand=Rolex&brand=OMEGA">Watches</Link>
-            </li>
-            <li className="nav-links" onClick={handelMenu}>
-            
-
-            <Link  className="link"to={"/add-product"}>Admin Page</Link>
-
-            <Link className="link"to={"/"}>Gifts</Link>
-
+              <Link className="link" to={"/"} onClick={handelLogout}>
+                Logout
+              </Link>
             </li>
           </ul>
         </nav>
-        <div className="bag">
-          <Link to="/cart">
-            <FontAwesomeIcon icon={faShoppingBag} />
-          </Link>
+        <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
       </div>
-      
     </DIV>
   );
 }
 
-export default Navbar;
+export default AdminNavbar;
 
 const DIV = styled.div`
   .ham {
@@ -86,6 +69,10 @@ const DIV = styled.div`
   .logo {
     margin: 0 20px;
   }
+  .logo h1 a {
+    text-decoration: none;
+    color: #fff;
+  }
   nav {
     margin: 0 20px;
   }
@@ -97,10 +84,6 @@ const DIV = styled.div`
     list-style: none;
   }
   .nav-links a {
-    text-decoration: none;
-    color: #fff;
-  }
-  a {
     text-decoration: none;
     color: #fff;
   }
@@ -118,11 +101,6 @@ const DIV = styled.div`
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  .bag {
-    display: none;
-    margin: 0 20px;
-    cursor: pointer;
-  }
 
   @media (max-width: 780px) {
     .menu {
@@ -139,8 +117,8 @@ const DIV = styled.div`
     }
     .nav-menu {
       position: fixed;
-      left: -120%;
-      top: 60px;
+      left: -200%;
+      top: 80px;
       gap: 40px;
       flex-direction: column;
       background-color: #292525;
@@ -154,9 +132,6 @@ const DIV = styled.div`
     }
     .nav-menu.active {
       left: 0;
-    }
-    .bag {
-      display: block;
     }
   }
 `;

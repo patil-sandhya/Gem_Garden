@@ -1,39 +1,22 @@
-import React, {useEffect,useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import {Link, useParams} from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
-import { updateCart } from "../Redux/Cart/action";
+import {Link} from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../../Redux/Admin/action";
+import { getProduct } from "../../Redux/Product/action";
 
-export const ProductCard = ({ id, price, about, avatar, brand }) => {
-  const userId = JSON.parse(localStorage.getItem("userId")) ;
+export const ProductCart_Admin = ({ id, price, about, avatar, brand, handleDelete, }) => {
 
-  //const { id } = useParams();
-  //const [data, setData] = useState({});
-  const products = useSelector((store) => store.productReducer.products);
-  const cart = useSelector((store) => store.CartReducer.cart);
 
-  const dispatch = useDispatch();
+    const [render, setRender] = useState(false)
 
-  
-
-  const AddtoCart = () => {
-    let newCart = [...cart, { id,price,about,avatar,brand, qty: 1 }];
-    // let count = 0;
-    let res = cart.filter((item) => item.id === +id);
-
-    if (res.length > 0) {
-      alert("already in cart");
-    } else {
-      dispatch(updateCart(userId, newCart));
-    }
-  };
   return (
     <DIV about={about}>
         <div className="card-div">
           <div className="card-image-div">
-          <Link to={`/ProductList/${id}`}>
+          {/* <Link to={`/ProductList/${id}`}> */}
             <img className="card-image" src={avatar} alt="jwellery" />
-          </Link>
+          {/* </Link> */}
           </div>
 
           <p className="card-about" id="card-about">
@@ -43,18 +26,22 @@ export const ProductCard = ({ id, price, about, avatar, brand }) => {
 
           <p className="card-brand">{brand}</p>
           <div className="card-button-div">
-            <button className="card-btn" id="cart-btn" onClick={AddtoCart}>
-              Add to Cart
-            </button>
-            <button className="card-btn" id="buy-btn">
-              Buy Now
-            </button>
+            <Link to={`/products/edit/${id}`} className='edit-link-btn' >
+                <button className="card-btn" id="cart-btn" >
+                    Edit 
+                </button>
+            </Link>
+            {/* <button className="card-btn" id="buy-btn" onClick={()=>{handleDelete(id)}} >
+              Delete
+            </button> */}
           </div>
           <p className="card-price">₹ {price}</p>
         </div>
     </DIV>
   );
 };
+
+
 
 const DIV = styled.div`
 
@@ -72,7 +59,7 @@ const DIV = styled.div`
   }
 
   .card-div:hover .card-button-div {
-    display: flex;
+    display: block;
     transform: translateY(0%);
   }
 
@@ -128,14 +115,16 @@ const DIV = styled.div`
   }
 
   .card-button-div {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     display: none;
+    
   }
 
   .card-btn {
-    width: 30wh;
+    width: 100%;
     padding: 5px;
+    padding-inline: 10px;
     height: 5vh;
     border: none;
     font-family: "Nunito Sans", sans-serif;
@@ -144,7 +133,7 @@ const DIV = styled.div`
     border: 2px solid #292525;
     transition: transform 0.3s ease-in-out;
     transform: translateY(20%);
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 13px;
   }
 
