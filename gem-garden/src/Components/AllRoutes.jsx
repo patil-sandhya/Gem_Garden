@@ -12,7 +12,7 @@ import PasswordRecovery from '../Pages/PasswordRecovery'
 import { AdminList } from '../Pages/Admin/Admin'
 import { EditProduct } from '../Pages/EditProduct'
 import AdminLogin from "../Pages/AdminLogin"
-import { AdminPage } from '../Pages/Admin/AdminPage'
+import { AddProduct } from '../Pages/Admin/AddProduct'
 
 
 
@@ -32,7 +32,7 @@ function AllRoutes() {
         <Route path='/admin' element={<AdminList/>}/>
         <Route path='/products/edit/:id' element={<EditProduct/>}/>
         <Route path='/productList/:id' element={<SingleProduct/>}/>
-        <Route path="/add-product" element={<AdminPage/>}/>
+        <Route path="/addProduct" element={<AddProduct/>}/>
         <Route path='/adminlogin' element={<AdminLogin />} />
       </Routes>
     </div>

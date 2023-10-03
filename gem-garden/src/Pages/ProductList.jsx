@@ -7,6 +7,7 @@ import { Sidebar } from "../Components/Sidebar";
 import { useSearchParams } from "react-router-dom";
 import Loading_Indicator from "../Assets/Loading_Indicator.gif";
 import HeroSection from "../Components/HeroSection";
+
 export const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();

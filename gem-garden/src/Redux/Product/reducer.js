@@ -1,4 +1,4 @@
-import { ADMIN_DELETE_REQUEST } from "../Admin/actionTypes";
+import { ADMIN_DELETE_REQUEST, POST_PRODUCT_SUCCESS } from "../Admin/actionTypes";
 import {
     GET_PRODUCT_FAILURE,
     GET_PRODUCT_REQUEST,
@@ -30,11 +30,9 @@ import {
       case GET_PRODUCT_FAILURE:
         return { ...state, isLoading: false, isError: true };
 
-      // case POST_PRODUCT_SUCCESS:
-      //   return { ...state, isLoading: false, products: [...state.products, payload] };
+      case POST_PRODUCT_SUCCESS:
+        return { ...state, isLoading: false, products: [...state.products, payload] };
 
-      // case ADMIN_DELETE_REQUEST:
-      //   return {...state, products.filter((el, id)=>el.id != payload)}
       default:
         return state;
     }
