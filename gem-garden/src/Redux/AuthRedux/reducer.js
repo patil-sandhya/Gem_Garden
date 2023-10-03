@@ -1,4 +1,6 @@
 import {
+  ADMIN_LOGIN,
+  ADMIN_LOGOUT,
   FETCH_USER_DATA_FAILURE,
   FETCH_USER_DATA_REQUEST,
   FETCH_USER_DATA_SUCCESS,
@@ -14,6 +16,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   userData: [],
+  isAdmin:false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -64,6 +67,16 @@ const reducer = (state = initialState, action) => {
         isLoading: false,
         isError: true,
       };
+      case ADMIN_LOGIN: 
+      return {
+        ...state,
+        isAdmin:true,
+      }
+      case ADMIN_LOGOUT:
+        return {
+          ...state,
+          isAdmin:false,
+        }
     default:
       return state;
   }
