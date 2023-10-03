@@ -13,4 +13,3 @@ export const getProduct = (params) => (dispatch)=>{
         dispatch({type: GET_PRODUCT_FAILURE})
     })
 }
-
