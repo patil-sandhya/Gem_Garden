@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { postProduct } from "../../Redux/Admin/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 // import { store } from "../redux/store";
 
 
@@ -16,9 +17,11 @@ const initalState = {
     image: "",
  
 };
-export const AdminPage = () => {
+export const AddProduct = () => {
+
+  const navigate = useNavigate()
   const [productData, setproductData] = useState(initalState);
- const {error,isError}=useSelector((store)=>{
+  const {error,isError}=useSelector((store)=>{
     return{
         error:store.productReducer.error,
         isError:store.productReducer.isError,
@@ -47,6 +50,7 @@ export const AdminPage = () => {
     // console.log(productData)
     dispatch(postProduct(productData))
     setproductData(initalState)
+    navigate('/admin')
   }
 
 

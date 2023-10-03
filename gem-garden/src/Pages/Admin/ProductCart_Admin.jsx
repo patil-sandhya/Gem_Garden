@@ -137,11 +137,6 @@ const DIV = styled.div`
     font-size: 13px;
   }
 
-  /* .edit-link-btn{
-    text-decoration: none;
-    
-  } */
-
   #buy-btn {
     background-color: #292525;
     color: white;
