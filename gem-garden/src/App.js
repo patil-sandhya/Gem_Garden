@@ -5,13 +5,17 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { useSelector } from "react-redux";
 import AdminNavbar from "./Components/AdminComponents/AdminNavbar";
+import { useEffect } from "react";
 
 function App() {
-  const isAdmin = localStorage.getItem("adminId")
+  let isAdmin = localStorage.getItem("adminId") 
+  useEffect(()=>{
+    isAdmin = localStorage.getItem("adminId")
+  },[isAdmin])
   console.log(isAdmin);
   return (
     <div>
-   <AdminNavbar/>
+      {isAdmin == "admin" ? <AdminNavbar/> : <Navbar/>}
       <AllRoutes />
       <Footer />
     </div>

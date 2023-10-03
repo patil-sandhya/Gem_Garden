@@ -2,61 +2,52 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { useDispatch } from "react-redux";
-import { logOut } from "../../Redux/AuthRedux/action";
 
 function AdminNavbar() {
   const [menu, setmenu] = useState(false);
-  const dispatch = useDispatch()
 
   const handelMenu = () => {
     setmenu((prev) => !prev);
   };
 
-  const { id } = useParams();
+  const handelLogout = () => {
+    localStorage.removeItem("adminId");
+  };
 
-  console.log(menu);
-
-  const handelLogout =()=>{
-    dispatch(logOut)
-  }
   return (
     <DIV>
-      <div className="logo">
-        <h1>
-          <Link to={"/"}>GEM GARDEN</Link>
-        </h1>
-      </div>
-      <nav>
-        <ul className={`nav-menu ${menu ? "active" : ""}`}>
-          <li className="nav-links" onClick={handelMenu}>
-            <Link to="/admin">ProductList</Link>
-          </li>
-          <li className="nav-links" onClick={handelMenu}>
-            <Link to="/user">Users</Link>
-          </li>
-          <li className="nav-links" onClick={handelMenu}>
-            <Link className="link" to={"/add-product"}>
-              Creat Product
-            </Link>
-          </li>
-          <li className="nav-links" onClick={handelMenu}>
-            <Link className="link" to={`/products/edit/${id}`}>
-              Edit Product
-            </Link>
-          </li>
-          <li className="nav-links" onClick={handelMenu}>
-            <Link className="link" to={"/"} onClick={handelLogout}>
-              Logout
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <div className="ham">
+      <div class="ham">
+        <div class="logo">
+          <h1>
+            <Link to={"/admin"}>GEM GARDEN</Link>
+          </h1>
+        </div>
+        <nav>
+          <ul className={`nav-menu ${menu ? "active" : ""}`}>
+            <li className="nav-links" onClick={handelMenu}>
+              <Link to="/admin">ProductList</Link>
+            </li>
+            <li className="nav-links" onClick={handelMenu}>
+              <li className="nav-links" onClick={handelMenu}>
+                <Link to="/user">Users</Link>
+              </li>
+            </li>
+            <li className="nav-links" onClick={handelMenu}>
+              <Link className="link" to={"/addProduct"}>
+                Creat Product
+              </Link>
+            </li>
+            <li className="nav-links" onClick={handelMenu}>
+              <Link className="link" to={"/"} onClick={handelLogout}>
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </nav>
         <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
       </div>
     </DIV>
@@ -66,9 +57,6 @@ function AdminNavbar() {
 export default AdminNavbar;
 
 const DIV = styled.div`
-border: 1px solid red;
-background-color: black;
-display: flex;
   .ham {
     width: 100%;
     background-color: #292525;
@@ -81,6 +69,10 @@ display: flex;
   .logo {
     margin: 0 20px;
   }
+  .logo h1 a {
+    text-decoration: none;
+    color: #fff;
+  }
   nav {
     margin: 0 20px;
   }
@@ -92,10 +84,6 @@ display: flex;
     list-style: none;
   }
   .nav-links a {
-    text-decoration: none;
-    color: #fff;
-  }
-  a {
     text-decoration: none;
     color: #fff;
   }
@@ -113,11 +101,6 @@ display: flex;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  .bag {
-    display: none;
-    margin: 0 20px;
-    cursor: pointer;
-  }
 
   @media (max-width: 780px) {
     .menu {
@@ -134,8 +117,8 @@ display: flex;
     }
     .nav-menu {
       position: fixed;
-      left: -120%;
-      top: 60px;
+      left: -200%;
+      top: 80px;
       gap: 40px;
       flex-direction: column;
       background-color: #292525;
@@ -149,9 +132,6 @@ display: flex;
     }
     .nav-menu.active {
       left: 0;
-    }
-    .bag {
-      display: block;
     }
   }
 `;
