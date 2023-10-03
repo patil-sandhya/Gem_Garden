@@ -1,73 +1,69 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../Redux/AuthRedux/action";
 
-function Navbar() {
+function AdminNavbar() {
   const [menu, setmenu] = useState(false);
+  const dispatch = useDispatch()
 
   const handelMenu = () => {
     setmenu((prev) => !prev);
   };
 
+  const { id } = useParams();
+
   console.log(menu);
+
+  const handelLogout =()=>{
+    dispatch(logOut)
+  }
   return (
     <DIV>
+      <div className="logo">
+        <h1>
+          <Link to={"/"}>GEM GARDEN</Link>
+        </h1>
+      </div>
+      <nav>
+        <ul className={`nav-menu ${menu ? "active" : ""}`}>
+          <li className="nav-links" onClick={handelMenu}>
+            <Link to="/admin">ProductList</Link>
+          </li>
+          <li className="nav-links" onClick={handelMenu}>
+            <Link to="/user">Users</Link>
+          </li>
+          <li className="nav-links" onClick={handelMenu}>
+            <Link className="link" to={"/add-product"}>
+              Creat Product
+            </Link>
+          </li>
+          <li className="nav-links" onClick={handelMenu}>
+            <Link className="link" to={`/products/edit/${id}`}>
+              Edit Product
+            </Link>
+          </li>
+          <li className="nav-links" onClick={handelMenu}>
+            <Link className="link" to={"/"} onClick={handelLogout}>
+              Logout
+            </Link>
+          </li>
+        </ul>
+      </nav>
       <div className="ham">
         <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-
-        <nav>
-          <ul className={`nav-menu ${menu ? "active" : ""}`}>
-            <li className="nav-links" onClick={handelMenu}>
-              <Link to="/orders">Orders</Link>
-            </li>
-            <li className="nav-links" onClick={handelMenu}>
-              <Link to="/login">Account</Link>
-            </li>
-            <li className="nav-links bag-number" onClick={handelMenu}>
-              <Link to="/cart">Bag</Link>
-            </li>
-          </ul>
-        </nav>
-        <div className="logo">
-          <h1>
-            <Link to={"/"}>GEM GARDEN</Link>
-          </h1>
-        </div>
-        <nav>
-          <ul className={`nav-menu ${menu ? "active" : ""}`}>
-            <li className="nav-links" onClick={handelMenu}>
-              <Link to="/ProductList?category=Rings&category=Brecelets&category=Earrning">
-                Jewelry
-              </Link>
-            </li>
-            <li className="nav-links" onClick={handelMenu}>
-              <Link to="/ProductList?brand=Rolex&brand=OMEGA">Watches</Link>
-            </li>
-            <li className="nav-links" onClick={handelMenu}>
-            
-            <Link className="link"to={"/"}>Gifts</Link>
-            </li>
-          </ul>
-        </nav>
-        <div className="bag">
-          <Link to="/cart">
-            <FontAwesomeIcon icon={faShoppingBag} />
-          </Link>
-        </div>
       </div>
-      
     </DIV>
   );
 }
 
-export default Navbar;
+export default AdminNavbar;
 
 const DIV = styled.div`
   .ham {

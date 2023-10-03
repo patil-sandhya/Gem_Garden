@@ -9,7 +9,6 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
 } from "./actionType";
-import { useNavigate } from "react-router-dom";
 
 const loginSuccess = () => (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
@@ -21,9 +20,7 @@ const loginFailure = (dispatch) => {
 };
 
 const logOut =(dispatch) =>{
-  let navigate = useNavigate();
   dispatch({type:ADMIN_LOGOUT});
-  navigate("/")
 }
 
 const getUserData = () => (dispatch) => {
