@@ -29,7 +29,7 @@ function AdminNavbar() {
             </li>
             <li className="nav-links" onClick={handelMenu}>
               <li className="nav-links" onClick={handelMenu}>
-                <Link to="/user">Users</Link>
+                <Link to="/">Users</Link>
               </li>
             </li>
             <li className="nav-links" onClick={handelMenu}>

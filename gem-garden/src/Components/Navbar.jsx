@@ -52,7 +52,11 @@ function Navbar() {
             </li>
             <li className="nav-links" onClick={handelMenu}>
             
+
+            <Link  className="link"to={"/add-product"}>Admin Page</Link>
+
             <Link className="link"to={"/"}>Gifts</Link>
+
             </li>
           </ul>
         </nav>
