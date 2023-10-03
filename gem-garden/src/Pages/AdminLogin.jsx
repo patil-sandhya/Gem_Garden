@@ -50,7 +50,7 @@ const AdminLogin = () => {
         newUserData[0].password == state.password
     ) {
       localStorage.clear();
-      localStorage.setItem("userId", userData[0].id);
+      localStorage.setItem("adminId", 'admin');
       navigate(comingFrom, { replace: true });
       dispatch(loginSuccess(state));
     } else {

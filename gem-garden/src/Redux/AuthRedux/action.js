@@ -1,5 +1,7 @@
 import axios from "axios";
 import {
+  ADMIN_LOGIN,
+  ADMIN_LOGOUT,
   FETCH_USER_DATA_FAILURE,
   FETCH_USER_DATA_REQUEST,
   FETCH_USER_DATA_SUCCESS,
@@ -7,14 +9,22 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
 } from "./actionType";
+import { useNavigate } from "react-router-dom";
 
 const loginSuccess = () => (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   dispatch({ type: LOGIN_SUCCESS });
+  dispatch({type: ADMIN_LOGIN});
 };
-const loginFailure = () => (dispatch) => {
+const loginFailure = (dispatch) => {
   dispatch({ type: LOGIN_FAILURE });
 };
+
+const logOut =(dispatch) =>{
+  let navigate = useNavigate();
+  dispatch({type:ADMIN_LOGOUT});
+  navigate("/")
+}
 
 const getUserData = () => (dispatch) => {
   dispatch({ type: FETCH_USER_DATA_REQUEST });
@@ -26,7 +36,7 @@ const getUserData = () => (dispatch) => {
     .catch((err) => dispatch({ type: FETCH_USER_DATA_FAILURE, payload: err }));
 };
 
-export { loginSuccess, getUserData, loginFailure };
+export { loginSuccess, getUserData, loginFailure,logOut };
 export const a = (id) => {
   axios.delete(`https://gem-gardern-mock-api.onrender.com/users`, id);
 };
