@@ -30,7 +30,7 @@ The heart of GEM GARDEN, the Product Page, showcases our extensive range of jewe
 ![Products Page](Screens/Products-1.jpg)
 
 ## ScreenShots
-![Products Page](screens/Products-2.jpg)
+![Products Page](Screens/Products-2.jpg)
 
 ## Single Product Page
 
@@ -40,7 +40,7 @@ The Single Product Page on GEM GARDEN is where the beauty and details of each je
 ![Single Products Page](Screens/SingleProduct-1.jpg)
 
 ## ScreenShots
-![Single Products Page](screens/SingleProduct-2.jpg)
+![Single Products Page](Screens/SingleProduct-2.jpg)
 
 ## Account Page
 
@@ -190,7 +190,12 @@ Install Gem Garden with npm
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arup-paul-310270243/)
 
+### Richa Singh
+ 
 
+[![profile](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/Richasi)
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arup-paul-310270243/)
 
 
 
