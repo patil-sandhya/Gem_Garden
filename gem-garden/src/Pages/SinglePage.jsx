@@ -14,7 +14,7 @@ import best_seller_4 from "../Assets/bestSeller-4.jpg";
 
 
 export const SingleProduct = () => {
-  const userId = JSON.parse(localStorage.getItem("userId")) || 1;
+  const userId = JSON.parse(localStorage.getItem("userId"));
 
   const { id } = useParams();
   const [data, setData] = useState({});
