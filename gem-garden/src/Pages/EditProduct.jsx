@@ -17,6 +17,7 @@ export const EditProduct = () => {
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
+
   
     useEffect(()=>{
       const {name, about, price, avatar} = products.find((el, i)=>el.id === +id)
@@ -110,7 +111,7 @@ export const EditProduct = () => {
   .card-title-input{
       width: 45%;
       border: none;
-      border-radius: 5%;
+      border-radius: 10px;
       text-indent: 5px;
       border: 1px solid #c7c7c7;
       font-size: 22px;
