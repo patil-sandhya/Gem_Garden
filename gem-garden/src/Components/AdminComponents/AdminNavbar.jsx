@@ -66,6 +66,9 @@ function AdminNavbar() {
 export default AdminNavbar;
 
 const DIV = styled.div`
+border: 1px solid red;
+background-color: black;
+display: flex;
   .ham {
     width: 100%;
     background-color: #292525;

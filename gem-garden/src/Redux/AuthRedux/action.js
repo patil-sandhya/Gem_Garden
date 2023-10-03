@@ -11,11 +11,11 @@ import {
 } from "./actionType";
 
 const loginSuccess = () => (dispatch) => {
-  dispatch({ type: LOGIN_REQUEST });
+ // dispatch({ type: LOGIN_REQUEST });
   dispatch({ type: LOGIN_SUCCESS });
-  dispatch({type: ADMIN_LOGIN});
+  //dispatch({type: ADMIN_LOGIN});
 };
-const loginFailure = (dispatch) => {
+const loginFailure = ()=> (dispatch) => {
   dispatch({ type: LOGIN_FAILURE });
 };
 

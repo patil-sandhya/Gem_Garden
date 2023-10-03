@@ -13,7 +13,7 @@ import { AdminList } from '../Pages/Admin/Admin'
 import { EditProduct } from '../Pages/EditProduct'
 import AdminLogin from "../Pages/AdminLogin"
 import { AddProduct } from '../Pages/Admin/AddProduct'
-
+import { PrivateRoute } from './PrivateRoute'
 
 
 
@@ -25,9 +25,9 @@ function AllRoutes() {
         <Route path='/ProductList' element={<ProductList/>}/>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/cardPayment' element={<CreditCard/>}/>
-        <Route path='/orders' element={<Order/>}/>
+        <Route path='/cart' element={<PrivateRoute><Cart/></PrivateRoute>}/>
+        <Route path='/cardPayment' element={<PrivateRoute><CreditCard/></PrivateRoute>}/>
+        <Route path='/orders' element={<PrivateRoute><Order/></PrivateRoute>}/>
         <Route path='/passwordrecovery' element={<PasswordRecovery />} />
         <Route path='/admin' element={<AdminList/>}/>
         <Route path='/products/edit/:id' element={<EditProduct/>}/>

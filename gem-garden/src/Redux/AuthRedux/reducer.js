@@ -11,7 +11,6 @@ import {
 
 const initialState = {
   isAuth: false,
-  token: "",
   isLogin: false,
   isLoading: false,
   isError: false,
@@ -34,9 +33,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         isAuth: true,
         isLogin: false,
-        token: payload,
         isLoading: false,
         isError: false,
+        isAdmin:false
       };
 
     case LOGIN_FAILURE:

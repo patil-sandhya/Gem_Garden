@@ -54,8 +54,8 @@ const Login = () => {
       newUserData[0].password == state.password
     ) {
       localStorage.clear();
-      localStorage.setItem("admin", userData[0].id);
-      dispatch(loginSuccess(state));
+      localStorage.setItem("userId", newUserData[0].id);
+      dispatch(loginSuccess());
       navigate(comingFrom, { replace: true });
     } else {
       dispatch(loginFailure());

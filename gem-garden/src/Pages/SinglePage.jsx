@@ -152,7 +152,7 @@ export const SingleProduct = () => {
               <div className="right-mid">
                 <h3>{data.brand}</h3>
                 <p>{data.category}</p>
-                <p> $ {data.price}</p>
+                <p> ₹ {data.price}</p>
               </div>
               <div className="right-bottom">
                 <button onClick={AddtoCart}>ADD TO BAG</button>

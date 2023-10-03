@@ -15,6 +15,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const [amt, setAmt] = useState(0)
   const [payment, setPayment] = useState('')
+  const [cartEmpty, setCartEmpty] = useState(false)
   const { name, cart, address } = useSelector((store) => {
     return {
       name: store.CartReducer.name,
@@ -40,8 +41,8 @@ const Cart = () => {
       let order = [...cart]
       //console.log("order", order)
       let emptyCart =[]
-      dispatch(updateCart(1,emptyCart))
-     dispatch(updateOrder(order))
+      dispatch(updateCart(userId,emptyCart))
+     dispatch(updateOrder(userId,order))
     }else{
       navigate("/cardPayment")
     }
@@ -92,8 +93,8 @@ const Cart = () => {
     },
   ];
   useEffect(() => {
-    dispatch(getUser(1));
-    // dispatch(upuser(item))
+    dispatch(getUser(userId));
+    //dispatch(upuser(item))
   }, []);
 
   useEffect(() => {
@@ -116,13 +117,17 @@ const Cart = () => {
       return item.id == id ? { ...item, qty: item.qty + val } : { ...item };
     });
    // console.log("res", res);
-    dispatch(updateCart(1, res));
+    dispatch(updateCart(userId, res));
   };
 
   const handleDelete = (id) => {
    // console.log("dlt")
     let res = cart.filter((item) => item.id != id);
-    dispatch(updateCart(1, res))
+    dispatch(updateCart(userId, res))
+    if(res.length <= 0){
+      setAmt(0)
+      setCartEmpty(true)
+    }
   };
   let totalItems = cart.length
   //console.log(payment)
@@ -131,7 +136,10 @@ const Cart = () => {
       <MainSection>
         <LeftSection>
           {/* Content for the left section */}
-
+          {
+            (cartEmpty) && <h3>No items in cart</h3>
+          }
+         
           <User>
             Diliver To:<span className="userName"> {name} </span>
             <br />

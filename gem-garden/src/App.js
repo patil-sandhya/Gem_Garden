@@ -7,11 +7,11 @@ import { useSelector } from "react-redux";
 import AdminNavbar from "./Components/AdminComponents/AdminNavbar";
 
 function App() {
-  const isAdmin = useSelector((store) => store.AuthReducer.isAdmin);
+  const isAdmin = localStorage.getItem("adminId")
   console.log(isAdmin);
   return (
     <div>
-      {isAdmin ? <AdminNavbar /> : <Navbar />}
+   <AdminNavbar/>
       <AllRoutes />
       <Footer />
     </div>
