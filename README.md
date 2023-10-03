@@ -12,7 +12,7 @@ Our Home Page is the gateway to a world of exquisite designer jewelry. Discover 
 
 
 ## Screenshots
-![Home Page](Screens/Home-1.png)
+![Home Page](https://drive.google.com/file/d/1BiWK_s1RWMDUceKs743_jaP-sljUix-6/view)
 
 ## ScreenShots
 ![Home Page](Screens/Home-2.jpg)
