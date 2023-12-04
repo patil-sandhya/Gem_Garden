@@ -19,12 +19,12 @@
 
 ### Account Page
 - Your personal space on GEM GARDEN, the Account Page, allows you to manage your profile. Here, you can conveniently log in if you're an existing member or sign up if you're new to our website. Enjoy a personalized shopping experience, track your orders, and save your favorite items for future reference.
-- 
+  
 ![Account Page](https://github.com/patil-sandhya/Gem_Garden/assets/112822104/a7f91e57-0435-4c9b-9b29-4d8f3a75eb95)
 
 ### Cart and Order Page
--The Cart Page is where your selections come together. Review and confirm the products you've added to your cart before proceeding to checkout. It's your shopping companion, ensuring you have everything you desire before finalizing your purchase.
--The Order Page is your window into your past transactions. View and track all your orders made on GEM GARDEN. Keep a record of your jewelry purchases, making it easy to refer back to your favorite pieces or check the status of your deliveries.
+- The Cart Page is where your selections come together. Review and confirm the products you've added to your cart before proceeding to checkout. It's your shopping companion, ensuring you have everything you desire before finalizing your purchase.
+- The Order Page is your window into your past transactions. View and track all your orders made on GEM GARDEN. Keep a record of your jewelry purchases, making it easy to refer back to your favorite pieces or check the status of your deliveries.
 
 ![Payment and card page](https://github.com/patil-sandhya/Gem_Garden/assets/112822104/927d78cf-9a89-4743-b1c8-59e1e60e7b08)
 
@@ -35,40 +35,33 @@
 ## Frontend Technologies
 
 ### React.js
-Our frontend is built using React.js, a popular JavaScript library for building user interfaces. React's component-based architecture allows us to create modular and reusable UI components, making the development process efficient and maintainable.
+- Our frontend is built using React.js, a popular JavaScript library for building user interfaces. React's component-based architecture allows us to create modular and reusable UI components, making the development process efficient and maintainable.
 
 ### JavaScript (JS)
-JavaScript is the foundation of our frontend development. It enables dynamic and interactive features on our website, ensuring a seamless and engaging user experience.
+- JavaScript is the foundation of our frontend development. It enables dynamic and interactive features on our website, ensuring a seamless and engaging user experience.
 
 ### CSS
-Cascading Style Sheets (CSS) are used to style and format our website's layout. CSS allows us to create visually appealing designs and responsive layouts that adapt to different screen sizes and devices.
+- Cascading Style Sheets (CSS) are used to style and format our website's layout. CSS allows us to create visually appealing designs and responsive layouts that adapt to different screen sizes and devices.
 
 ## Backend Technology
 
 ### RESTful API
-Our backend relies on a RESTful API (Representational State Transfer) to handle data requests and interactions with the database. This API follows REST principles, providing a standardized and scalable approach to building web services. It enables communication between the frontend and backend, allowing users to browse products, manage accounts, view their cart, and place orders seamlessly.
+- Our backend relies on a RESTful API (Representational State Transfer) to handle data requests and interactions with the database. This API follows REST principles, providing a standardized and scalable approach to building web services. It enables communication between the frontend and backend, allowing users to browse products, manage accounts, view their cart, and place orders seamlessly.
 
 ## Additional Technologies
-
-In addition to the core technologies mentioned above, we may use other tools and libraries to enhance the functionality and performance of our website. These may include:
+- In addition to the core technologies mentioned above, we may use other tools and libraries to enhance the functionality and performance of our website. These may include:
 
 ### Authentication: 
-
-For user authentication and security, we implement authentication mechanisms such as JWT (JSON Web Tokens) or OAuth.
-
+- For user authentication and security, we implement authentication mechanisms such as JWT (JSON Web Tokens) or OAuth.
 
 ### State Management:
-
-Redux or Context API in React may be used for state management, ensuring efficient data sharing between components.
+- Redux or Context API in React may be used for state management, ensuring efficient data sharing between components.
 
 ### Responsive Design: 
-
-We follow responsive web design principles to ensure our website functions seamlessly on various devices, including desktops, tablets, and smartphones.
-
+- We follow responsive web design principles to ensure our website functions seamlessly on various devices, including desktops, tablets, and smartphones.
 
 ### Deployment: 
-
-Vercel used for deploying and hosting the frontend and for backend components we used Render.com .
+- Vercel used for deploying and hosting the frontend and for backend components we used Render.com .
 
 Our tech stack is carefully chosen to provide a robust, scalable, and user-friendly experience for our customers while ensuring the security and integrity of their data.
 
@@ -76,25 +69,23 @@ Our tech stack is carefully chosen to provide a robust, scalable, and user-frien
 
 ### Main api Link
 
-```http
+```bash
   https://gem-gardern-mock-api.onrender.com/
 ```
+
 #### Get All Products
 
-```http
+```bash
   https://gem-gardern-mock-api.onrender.com/products
 ```
 
 #### Get All Users
 
-```http
+```bash
   https://gem-gardern-mock-api.onrender.com/users
 ```
 
-
-
 ## Deployment
-
 To deploy this project run
 
 ```bash
@@ -103,7 +94,7 @@ To deploy this project run
 
 ### Vercel Link 
 
-```http
+```bash
   https://gem-gardern-mock-api.onrender.com/users
 ```
 
@@ -120,33 +111,26 @@ Install Gem Garden with npm
 ## 🔗 Links
  
  ### Sandhya Patil
-
 [![profile](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/patil-sandhya)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
 
  ### Arup Paul
-
 [![profile](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/Its-Arup)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arup-paul-310270243/)
 
 ### Ashish Kumar
-
 [![profile](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/ashishsen003)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arup-paul-310270243/)
 
 ### Sanjay Sahu
- 
-
 [![profile](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/sanju01sahu)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arup-paul-310270243/)
 
 ### Richa Singh
- 
-
 [![profile](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/Richasi)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arup-paul-310270243/)
