@@ -1,6 +1,5 @@
 # festive-crayon-1023
-
-# GEM GARDEN
+### Gem Garden
 Welcome to GEM GARDEN, your premier destination for exquisite designer jewelry! Our e-commerce website is designed to provide an unparalleled shopping experience for jewelry enthusiasts of all tastes. Whether you're searching for timeless classics or the latest in contemporary designs, GEM GARDEN has it all.
 
 ## Home Page
