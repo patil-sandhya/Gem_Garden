@@ -1,5 +1,11 @@
 # festive-crayon-1023
 
+![All collection](https://github.com/patil-sandhya/Gem_Garden/assets/112822104/fc3e9bde-e4f3-4d22-8218-a7db687b46b5)
+![Homepage-1](https://github.com/patil-sandhya/Gem_Garden/assets/112822104/09fe16c4-a417-4135-a4d1-37b2d286f878)
+![Homepage-2](https://github.com/patil-sandhya/Gem_Garden/assets/112822104/aa2085f5-df9e-441d-bbd3-7cb2e3eafda0)
+![Payment and card page](https://github.com/patil-sandhya/Gem_Garden/assets/112822104/927d78cf-9a89-4743-b1c8-59e1e60e7b08)
+![Single page](https://github.com/patil-sandhya/Gem_Garden/assets/112822104/a991b430-8097-4ccc-8a5d-2ceed241e890)
+
 # GEM GARDEN
 
 Welcome to GEM GARDEN, your premier destination for exquisite designer jewelry! Our e-commerce website is designed to provide an unparalleled shopping experience for jewelry enthusiasts of all tastes. Whether you're searching for timeless classics or the latest in contemporary designs, GEM GARDEN has it all.
