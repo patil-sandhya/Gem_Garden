@@ -108,7 +108,7 @@ Install Gem Garden with npm
 ```
 
     
-## 🔗 Team Members 
+## Team Members 
  
  ### Sandhya Patil
 [![profile](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/patil-sandhya)
