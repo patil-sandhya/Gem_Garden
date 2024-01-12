@@ -92,10 +92,10 @@ To deploy this project run
   npm run deploy
 ```
 
-### Vercel Link 
+### Netlify Link 
 
 ```bash
-  https://gem-gardern-mock-api.onrender.com/users
+ https://gemgarden.netlify.app/
 ```
 
 ## Installation
